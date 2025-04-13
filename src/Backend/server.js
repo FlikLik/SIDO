@@ -9,7 +9,7 @@ app.use(cors())
 app.use(json())
 
 const db = createConnection({
-    host: '',
+    host: 'localhost:3306',
     user: 'admin',
     password: '',
     database: 'sido'
