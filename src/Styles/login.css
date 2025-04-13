@@ -1,0 +1,29 @@
+@import 'https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css';
+
+.title {
+    color: #216baf;
+    text-shadow: 2px 2px 4px rgb(255, 255, 255);
+}
+
+.subtitle {
+    color: #2e92f0;
+    text-shadow: 2px 2px 4px rgb(255, 255, 255);
+}
+
+.section {
+    border-radius: 20px;
+}
+
+.image {
+    margin: 0 auto;
+}
+
+.input {
+    background-color: cornflowerblue;
+    border-color: #216baf;
+}
+
+.input::placeholder {
+    color: black;
+    text-shadow: 2px 2px 4px rgb(255, 255, 255);
+}
