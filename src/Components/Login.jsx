@@ -1,9 +1,13 @@
 import '../Styles/login.css'
+import axios from 'axios'
 
 export default function Login() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        axios.get('http://localhost:3000/')
+            .then((response) => console.log('Conexion exitosa', response.data))
+            .catch((error) => console.log('Error al conectar', error))
     }
 
     return (
