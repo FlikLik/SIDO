@@ -1,6 +1,7 @@
+import { getAllUsers } from './Backend/queries.js'
+
 import express, { json } from 'express'
 import cors from 'cors'
-import { createConnection } from 'mysql'
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -8,20 +9,16 @@ const app = express()
 app.use(cors())
 app.use(json())
 
-const db = createConnection({
-    host: '132.148.180.150',
-    user: 'admin',
-    password: 'QrTj5g4rYMfxHAh',
-    database: 'SIDO'
-})
-
-db.connect((err) => {
-    if (err) throw err
-    console.log('Connected to the database')
-})
-
 app.get('/', (req, res) => {
     res.send('Hello World!')
+})
+
+app.post('/login', (req, res) => {
+    const { code } = req.body
+    getAllUsers([code], (err, results) => {
+        if (err) throw err
+        res.send({ count: results[0].count })
+    })
 })
 
 app.listen(3000, () => {
