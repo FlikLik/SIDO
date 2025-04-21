@@ -5,4 +5,13 @@
 
 .survey {
     background-color: #18446e;
+    max-width: 50%;
+}
+
+.input[type=number] {
+    width: 150px;
+}
+
+.input[type=checkbox] {
+    margin-right: 10px;
 }
