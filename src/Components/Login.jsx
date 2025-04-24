@@ -1,19 +1,24 @@
 import styles from '../Styles/login.module.css'
 import axios from 'axios'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 
 export default function Login() {
 
     const navigate = useNavigate()
+    const isAuth = localStorage.getItem('isAuth') === 'true'
     const [code, setCode] = useState("")
     const [showLoader, setShowLoader] = useState(false)
+
+    useEffect(() => {
+        if (isAuth) navigate('/home', { replace: true })
+    }, [isAuth, navigate])
 
     const handleSubmit = (e) => {
         e.preventDefault()
         const loading = toast.loading('Buscando usuario...', { className: styles.toastLoading })
-        axios.post('http://localhost:3000/login', { code }, { headers: { "Cache-Control": "no-cache" } })
+        axios.post('http://localhost:3000/login', { code })
             .then(response => {
                 if (response.data.count === 0) {
                     toast.update(loading, { render: 'Usuario no encontrado', type: 'error', isLoading: false, autoClose: 3000, className: styles.toastError })
@@ -22,8 +27,9 @@ export default function Login() {
                     toast.update(loading, { render: 'Usuario encontrado', type: 'success', isLoading: false, autoClose: 3000, className: styles.toastLoading })
                     setShowLoader(true)
                     setTimeout(() => {
-                        navigate('/home')
                         setShowLoader(false)
+                        localStorage.setItem('isAuth', 'true')
+                        navigate('/home', { replace: true })
                     }, 2000)
                 }
             })
