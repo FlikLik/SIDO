@@ -5,7 +5,6 @@ import Login from './Components/Login.jsx'
 import Homepage from './Components/Homepage.jsx'
 import Survey from './Components/Survey.jsx'
 
-
 function App() {
 
   const isAuth = localStorage.getItem('isAuth') === 'true'

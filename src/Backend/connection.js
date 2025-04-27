@@ -8,6 +8,6 @@ export const db = createConnection({
 })
 
 db.connect((err) => {
-    if (err) throw err
+    if (err) throw err.message
     console.log('Connected to the database')
 })

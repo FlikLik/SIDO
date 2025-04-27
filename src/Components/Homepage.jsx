@@ -1,26 +1,31 @@
-import { useEffect } from 'react'
+import Header from './Home/Header'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import Overview from './Home/Overview'
+import Concepts from './Home/Concepts'
+import Results from './Home/Results'
+import Summary from './Home/Summary'
+
 
 export default function Homepage() {
 
     const navigate = useNavigate()
     const isAuth = localStorage.getItem('isAuth') === 'true'
+    const [activeTab, setActiveTab] = useState('Overview')
 
     useEffect(() => {
         if (!isAuth) navigate('/', { replace: true })
     }, [isAuth, navigate])
 
-    const handleLogout = (e) => {
-        e.preventDefault()
-        localStorage.removeItem('isAuth')
-        navigate('/', { replace: true })
-    }
-
     return (
         <>
-            Homepage
-            <br />
-            <button type="button" className='button is-danger' onClick={handleLogout}>Logout</button>
+            <Header activeTab={activeTab} setActiveTab={setActiveTab} />
+            <div>
+                {activeTab === 'Overview' && <Overview />}
+                {activeTab === 'Concepts' && <Concepts />}
+                {activeTab === 'Results' && <Results />}
+                {activeTab === 'Summary' && <Summary />}
+            </div>
         </>
     )
 }
