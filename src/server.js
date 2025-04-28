@@ -1,4 +1,5 @@
 import { getAllUsers } from './Backend/queries.js'
+import { getAllCompanies } from './Backend/queries.js'
 
 import express, { json } from 'express'
 import cors from 'cors'
@@ -18,6 +19,13 @@ app.post('/login', (req, res) => {
     getAllUsers([code], (err, results) => {
         if (err) throw err
         res.send({ count: results[0].count })
+    })
+})
+
+app.get('/companies', (req, res) => {
+    getAllCompanies((err, results) => {
+        if (err) throw err
+        res.send(results)
     })
 })
 

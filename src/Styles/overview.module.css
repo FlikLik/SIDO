@@ -1,0 +1,18 @@
+.infoBox {
+    height: 150px;
+    overflow-y: auto;
+    background-color: rgba(75, 17, 235, 0.3);
+    box-shadow: rgb(0, 0, 0) 0px 0px 20px;
+    border-radius: 30px;
+}
+
+.infoBoxText {
+    color: black
+}
+
+.companiesInfobox {
+    height: 250px;
+    overflow-y: auto;
+    box-shadow: rgb(0, 0, 0) 0px 0px 20px;
+    border-radius: 10px;
+}
