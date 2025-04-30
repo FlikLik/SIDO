@@ -40,3 +40,12 @@
 .list li {
     text-indent: 10px;
 }
+
+.textwrap {
+    text-wrap: wrap;
+    word-wrap: break-word;
+}
+
+.phantomDiv {
+    opacity: 0.5;
+}
