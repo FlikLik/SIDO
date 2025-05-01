@@ -15,6 +15,17 @@ export default function Login() {
         if (isAuth) navigate('/home', { replace: true })
     }, [isAuth, navigate])
 
+    const searchCompany = (code) => {
+        axios.post('http://localhost:3000/company', { code })
+            .then(response => {
+                localStorage.setItem('company', response.data.name)
+                console.log(localStorage.getItem('company'))
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault()
         const loading = toast.loading('Buscando usuario...', { className: styles.toastLoading })
@@ -29,6 +40,7 @@ export default function Login() {
                     setTimeout(() => {
                         setShowLoader(false)
                         localStorage.setItem('isAuth', 'true')
+                        searchCompany(code)
                         navigate('/home', { replace: true })
                     }, 2000)
                 }

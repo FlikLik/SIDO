@@ -1,5 +1,8 @@
 import { getAllUsers } from './Backend/queries.js'
 import { getAllCompanies } from './Backend/queries.js'
+import { getCompany } from './Backend/queries.js'
+import { getCompanyResults } from './Backend/queries.js'
+import { getCompanyDesp } from './Backend/queries.js'
 
 import express, { json } from 'express'
 import cors from 'cors'
@@ -14,6 +17,8 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 
+//Endpoint que recibe el code del usuario y devuelve el numero de usuarios que tienen el mismo code
+//Se utiliza para verificar si el usuario existe
 app.post('/login', (req, res) => {
     const { code } = req.body
     getAllUsers([code], (err, results) => {
@@ -22,10 +27,38 @@ app.post('/login', (req, res) => {
     })
 })
 
+
+//Endpoint que recibe el code del usuario y devuelve el nombre de la empresa que tiene el mismo code
+//Se utiliza para buscar el nombre de la empresa en la base de datos
+app.post('/company', (req, res) => {
+    const { code } = req.body
+    getCompany([code], (err, results) => {
+        if (err) throw err
+        res.send({ name: results[0].name })
+    })
+})
+
+//Endpoint que devuelve los datos de la tabla Companies
 app.get('/companies', (req, res) => {
     getAllCompanies((err, results) => {
         if (err) throw err
         res.send(results)
+    })
+})
+
+app.post('/ecairesults', (req, res) => {
+    const { name, year } = req.body
+    getCompanyResults([name, year], (err, results) => {
+        if (err) throw err
+        res.send({ eValue: results[0].educacionValue, cValue: results[0].capacitacionValue, aValue: results[0].adiestramientoValue, iValue: results[0].instruccionValue })
+    })
+})
+
+app.post('/desperdicio', (req, res) => {
+    const { name, year } = req.body
+    getCompanyDesp([name, year], (err, results) => {
+        if (err) throw err
+        res.send({ advance: results[0].advance, waste: results[0].waste })
     })
 })
 

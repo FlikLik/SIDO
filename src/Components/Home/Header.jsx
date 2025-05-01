@@ -9,6 +9,7 @@ export default function Header({ activeTab, setActiveTab }) {
     const handleLogout = (e) => {
         e.preventDefault()
         localStorage.removeItem('isAuth')
+        localStorage.removeItem('company')
         navigate('/', { replace: true })
     }
 

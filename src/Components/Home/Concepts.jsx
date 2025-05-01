@@ -96,7 +96,7 @@ export default function Concepts() {
                         }
                     </ul>
                 </div>
-                <button class="modal-close is-large" aria-label="close" onClick={() => setIsActive(false)}></button>
+                <button className="modal-close is-large" aria-label="close" onClick={() => setIsActive(false)}></button>
             </div>
         </div>
     )
