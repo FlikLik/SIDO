@@ -20,8 +20,6 @@ export default function DespOrg() {
     }, [])
 
     function detAdvanceDesp(advance, waste) {
-        console.log(advance, waste)
-
         if ((advance >= 0 && advance <= 40) & waste > 30) {
             setPhase('I. Control de calidad convencional')
         }

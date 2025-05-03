@@ -1,5 +1,7 @@
 import ECAIres from '../Results/ECAIres'
 import DespOrg from '../Results/DespOrg'
+import DepsKPI from '../Results/DepsKPI'
+import Employees from '../Results/Employees'
 
 export default function Results() {
 
@@ -19,6 +21,11 @@ export default function Results() {
                         <DespOrg />
                     </div>
                 </div>
+                <h1 className="title is-1">Análisis de KPIs</h1>
+                <DepsKPI />
+                <br />
+                <br />
+                <Employees />
             </div>
         </div >
     )

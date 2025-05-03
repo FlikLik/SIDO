@@ -38,6 +38,8 @@ export const getCompanyResults = ([name, year], callback) => {
     })
 }
 
+
+//Sentencia que devuelve el valor del avance y desperdicio organizacional de la empresa que tiene el mismo nombre y año que el que se le pasa por parametro
 export const getCompanyDesp = ([name, year], callback) => {
     const query = 'SELECT advance, waste FROM ECAIresults JOIN Companies ON ECAIresults.id_company = Companies.id WHERE Companies.name = ? AND ECAIresults.year = ?'
     db.query(query, [name, year], (err, results) => {
@@ -45,3 +47,43 @@ export const getCompanyDesp = ([name, year], callback) => {
         return callback(null, results)
     })
 }
+
+//Sentencia que devuelve los departamentos de la empresa que tiene el mismo nombre que el que se le pasa por parametro
+export const getDeps = (name, callback) => {
+    const query = 'SELECT DISTINCT Users.area FROM Users WHERE Users.id_company = (SELECT id FROM Companies WHERE Companies.name = ?)'
+    db.query(query, [name], (err, results) => {
+        if (err) throw err
+        return callback(null, results)
+    })
+}
+
+//Sentencia que devuelve los resultados de los KPIs ya sea de un departamento o de un empleado de acuuerdo al nombre y año que se le pase como parámetro
+export const getKPIS = ([name, year], callback) => {
+    let query
+    switch (true) {
+        case /^[a-zA-Z]+$/.test(name): query = 'SELECT A, B , C, D, E, F, G, H, I, J, K, L, M, N FROM OCQresults WHERE depName = ? AND year = ?'
+            break
+        case /\d/.test(name): query = 'SELECT A, B , C, D, E, F, G, H, I, J, K, L, M, N FROM OCQresults WHERE id_employee = (SELECT id_employee from Users WHERE Users.code = ?) AND year = ?'
+            break
+    }
+    db.query(query, [name, year], (err, results) => {
+        if (err) throw err
+        return callback(null, results)
+    })
+}
+
+export const getEmployees = (company, callback) => {
+    const query = 'SELECT Users.code FROM Users JOIN Companies ON Users.id_company = Companies.id WHERE Companies.name = ?'
+    db.query(query, [company], (err, results) => {
+        if (err) throw err
+        return callback(null, results)
+    })
+}
+
+export const getEmployeesData = ([code], callback) => {
+    const query = 'SELECT position, area FROM Users WHERE code = ?'
+    db.query(query, [code], (err, results) => {
+        if (err) throw err
+        return callback(null, results)
+    })
+} 
