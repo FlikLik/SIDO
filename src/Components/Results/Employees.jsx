@@ -91,7 +91,7 @@ export default function Employees() {
                                 <PolarAngleAxis dataKey="name" />
                                 <PolarRadiusAxis />
                                 <Tooltip />
-                                <Radar name="KPIs" dataKey="value" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
+                                <Radar name="Evaluacion" dataKey="value" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
                             </RadarChart>
                         </ResponsiveContainer>
                     ) : <p className='title is-4'>Nada que mostrar</p>
