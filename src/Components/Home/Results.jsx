@@ -2,8 +2,11 @@ import ECAIres from '../Results/ECAIres'
 import DespOrg from '../Results/DespOrg'
 import DepsKPI from '../Results/DepsKPI'
 import Employees from '../Results/Employees'
+import { useState } from 'react'
 
 export default function Results() {
+
+    const [year, setYear] = useState('')
 
     return (
         <div className="container has-text-centered mt-6">
@@ -22,10 +25,27 @@ export default function Results() {
                     </div>
                 </div>
                 <h1 className="title is-1">Análisis de KPIs</h1>
-                <DepsKPI />
-                <br />
-                <br />
-                <Employees />
+                <div className='control'>
+                    <label className="radio title is-2 mr-4">
+                        <input type="radio" name="year" className='mr-2' onChange={() => setYear('2024')} />
+                        2024
+                    </label>
+                    <label className="radio title is-2 mr-4">
+                        <input type="radio" name="year" className='mr-2' onChange={() => setYear('2025')} />
+                        2025
+                    </label>
+                </div>
+                {
+                    year !== '' && (
+                        <>
+                            <DepsKPI year={year} />
+                            <br />
+                            <br />
+                            <Employees year={year} />
+                        </>
+                    )
+                }
+
             </div>
         </div >
     )

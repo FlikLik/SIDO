@@ -3,8 +3,9 @@ import axios from 'axios'
 import styles from '../../Styles/depskpi.module.css'
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Legend, Cell } from 'recharts'
 import { KPIS } from './KPIS.js'
+import { toast } from 'react-toastify'
 
-export default function DepsKPI() {
+export default function DepsKPI({ year }) {
 
     const [deps, setDeps] = useState([])
     const [deptsKpis, setDeptsKpis] = useState([])
@@ -17,13 +18,14 @@ export default function DepsKPI() {
                 setDeps(response.data)
             })
             .catch(error => {
+                toast.error('Error al conectar al servidor: Departments Failure')
                 console.log(error)
             })
     }, [])
 
     const handleDepResult = (dep) => {
         let formattedData = []
-        axios.post('http://localhost:3000/kpis', { name: dep, year: '2024' })
+        axios.post('http://localhost:3000/kpis', { name: dep, year: year })
             .then(response => {
                 // eslint-disable-next-line no-unused-vars
                 Object.entries(response.data[0]).forEach(([key, value], index) => {
@@ -33,6 +35,7 @@ export default function DepsKPI() {
                 setDeptsKpis(formattedData)
             })
             .catch(error => {
+                toast.error('Error al conectar al servidor: Departments Failure')
                 console.log(error)
             })
     }
@@ -47,7 +50,12 @@ export default function DepsKPI() {
                             <button className={'button mb-5 ' + styles.button} key={index} onClick={() => handleDepResult(dep.area)}>
                                 {dep.area}
                             </button>
-                        )) : <h1 className='title is-3'>Cargando...</h1>
+                        )) : <div className='has-text-centered is-size-2 has-text-black' style={{ opacity: 0.5 }}>
+                            <figure>
+                                <img src="404notfound.svg" alt="404 not found" width={200} height={200} />
+                            </figure>
+                            <p>Cargando...</p>
+                        </div>
                     }
                 </div>
             </div>
@@ -59,7 +67,7 @@ export default function DepsKPI() {
                         <ResponsiveContainer width='100%' height={400}>
                             <BarChart data={deptsKpis}>
                                 <XAxis dataKey='name' />
-                                <YAxis />
+                                <YAxis domain={[0, 5]} />
                                 <Tooltip />
                                 <Legend payload={deptsKpis.map((entry, index) => ({
                                     value: entry.name,
@@ -75,9 +83,14 @@ export default function DepsKPI() {
                                 </Bar>
                             </BarChart>
                         </ResponsiveContainer>
-                    ) : <p className='title is-4'>Nada que mostrar</p>
+                    ) : <div className='has-text-centered is-size-2 has-text-black' style={{ opacity: 0.5 }}>
+                        <figure>
+                            <img src="404notfound.svg" alt="404 not found" width={200} height={200} />
+                        </figure>
+                        <p>Cargando...</p>
+                    </div>
                 }
             </div>
-        </div>
+        </div >
     )
 }

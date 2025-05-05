@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { PieChart, Pie, Legend, Tooltip, ResponsiveContainer, Cell } from 'recharts'
+import { toast } from 'react-toastify'
 
 export default function ECAIres() {
     const [chartData, setChartData] = useState([])
@@ -33,6 +34,7 @@ export default function ECAIres() {
                 setChartData(formattedData)
             })
             .catch(error => {
+                toast.error('Error al conectar al servidor: ECAI Failure')
                 console.log(error)
             })
     }, [])
@@ -54,7 +56,12 @@ export default function ECAIres() {
                             <Legend wrapperStyle={{ fontSize: '1.5rem', fontWeight: 'bold', textShadow: '2px 2px 4px white' }} />
                         </PieChart>
                     </ResponsiveContainer>
-                ) : <p className='title is-4'>Cargando...</p>
+                ) : <div className='has-text-centered is-size-2 has-text-black' style={{ opacity: 0.5 }}>
+                    <figure>
+                        <img src="404notfound.svg" alt="404 not found" width={200} height={200} />
+                    </figure>
+                    <p>Cargando...</p>
+                </div>
             }
         </>
     )

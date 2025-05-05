@@ -21,7 +21,7 @@ export default function Overview() {
                 </figure>
             </section>
 
-            <div className="fixed-grid has-2-cols mt-6">
+            <div className="fixed-grid has-2-cols mt-6 has-1-cols-mobile">
                 <div className="grid has-text-centered">
                     {
                         description.map((item) => (
@@ -50,7 +50,7 @@ export default function Overview() {
             <br />
             <h1 className="title is-1">Empresas que han colaborado con SIDO</h1>
             <br />
-            <div className="fixed-grid has-2-cols mt-6">
+            <div className="fixed-grid has-2-cols mt-6 has-1-cols-mobile">
                 {
                     companies.map((company) => (
                         <div key={company.id} className="grid has-text-centered">

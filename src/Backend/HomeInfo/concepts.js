@@ -83,3 +83,93 @@ export const desperdicioConcepts = [
         content: ['Propuestas de Mejora Implantada - 100%', 'Personal con Propuestas de Mejora - 100%', 'Problemas Documentados - 100%', 'Cumplimiento de Compromisos - 100%']
     }
 ]
+
+export const NOM035 = [
+    {
+        id: 1,
+        title: '¿Qué es la NOM035-STPS-2018?',
+        content: 'La NOM-035-STPS-2018 es una norma oficial mexicana emitida por la Secretaría del Trabajo y Previsión Social que establece los lineamientos para identificar, analizar y prevenir los factores de riesgo psicosocial en los centros de trabajo. Su propósito principal es promover entornos organizacionales saludables que favorezcan el bienestar emocional, la salud mental y la productividad de los trabajadores.',
+    },
+    {
+        id: 2,
+        title: '¿Cómo funciona la NOM-035?',
+        content: 'La norma se aplica a través de un conjunto de procedimientos que incluyen:',
+        list: ['Diagnósticos organizacionales (a través de encuestas y cuestionarios estructurados)', 'Análisis de factores de riesgo psicosocial como la carga de trabajo, la falta de control, el liderazgo negativo o el acoso.', 'Evaluación del entorno organizacional (sentido de pertenencia, justicia, participación, reconocimiento, etc.)', 'Intervenciones preventivas o correctivas en función de los hallazgos.'],
+        afterlist: 'Además, está dividida en tres niveles de obligaciones, según el número de empleados, lo ue permite su implementación escalonada y adecuada al tamaño de cada empresa.'
+    },
+    {
+        id: 3,
+        title: '¿Dónde aplica la NOM-035?',
+        content: 'La NOM-035 es obligatoria para todas las empresas establecidas en México, sin importar el giro o sector al que pertenezcan. Se aplica en oficinas, plantas de producción, instituciones educativas, clínicas, tiendas, etc. Su adaptabilidad la hace útil tanto en entornos presenciales como híbridos o remotos.'
+    },
+    {
+        id: 4,
+        title: '¿Cuándo debe aplicarse la NOM-035?',
+        content: 'Debe implementarse de manera permanente como parte del sistema de gestión laboral. Algunos momentos clave para su aplicación incluyen:',
+        list: ['Al iniciar operaciones', 'Durante procesos de crecimiento o reestructuración', 'Posterior a eventos traumáticos o cambios organizacionales importantes', 'De manera periódica, para evaluar el bienestar del personal y ajustar políticas internas']
+    },
+    {
+        id: 5,
+        title: '¿Por qué implementar la NOM-035?',
+        content: 'Aplicar esta norma trae múltiples beneficios, tanto legales como organizacionales:',
+        list: ['Cumple con la legislación mexicana vigente en salud y seguridad en el trabajo', 'Reduce el ausentismo, el burnout y la rotación de personal', 'Mejora el clima laboral, la satisfacción y el sentido de pertenencia de los colaboradores', ' Fortalece la cultura preventiva y la reputación de la empresa como organización responsable y humana', 'Aumenta la productividad y eficiencia operativa al reducir conflictos y mejorar el ambiente de trabajo.']
+    },
+    {
+        id: 6,
+        title: '¿Quién debe aplicar la NOM-035?',
+        content: 'La responsabilidad de implementar la NOM-035 recae principalmente en los empleadores o responsables de recursos humanos, pero su cumplimiento es compartido con todos los trabajadores. La colaboración entre líderes y equipos es fundamental para construir un entorno organizacional sano, justo y comprometido con la salud emocional de su gente.'
+    }
+]
+
+export const SIDOyNOM035 = [
+    {
+        id: 1,
+        title: '¿Qué relación tiene la NOM-035 con SIDO?',
+        content: 'SIDO ha sido diseñado para facilitar la implementación y seguimiento de la NOM-035-STPS-2018 en las organizaciones, especialmente en las MiPyMEs. La plataforma digital integra las Guías II y III de la norma, permitiendo una aplicación automatizada, visual y continua de los lineamientos oficiales, desde la detección de riesgos psicosociales hasta la evaluación del entorno organizacional favorable.'
+    },
+    {
+        id: 2,
+        title: '¿Cómo ayuda SIDO a cumplir la NOM-035?',
+        content: 'SIDO convierte los lineamientos de la NOM-035 en herramientas prácticas mediante:',
+        list: ['Cuestionarios digitales validados y adaptados desde las guías de la norma', 'Procesamiento automático de resultados con análisis estadístico y visualizaciones claras', ' Generación de reportes técnicos para auditorías, revisiones internas o diagnósticos periódicos', ' Sugerencias de intervención y mejora continua, alineadas a los resultados obtenidos'],
+        afterlist: 'Además, SIDO permite aplicar estos instrumentos de forma anónima, estructurada y confidencial, fortaleciendo la confianza y participación de los colaboradores'
+    },
+    {
+        id: 3,
+        title: '¿Dónde se aplica SIDO para la NOM-035?',
+        content: 'SIDO puede ser utilizado en cualquier centro de trabajo que busque cumplir con la NOM-035:',
+        list: ['Oficinas administrativas', 'Plantas operativas', 'Empresas con esquemas presenciales, híbridos o remotos', 'Organizaciones públicas o privadas de cualquier sector'],
+        afterlist: 'Su enfoque modular y flexible lo hace ideal para empresas con diferentes niveles de madurez en la gestión del talento humano.'
+    },
+    {
+        id: 4,
+        title: '¿Cuándo implementar SIDO con enfoque NOM-035?',
+        content: 'SIDO es útil en distintas etapas:',
+        list: ['Durante el diagnóstico inicial para cumplir con la norma', 'En monitoreos regulares para prevenir riesgos y mejorar el clima laboral', 'Después de aplicar acciones correctivas para evaluar su efectividad', 'Como parte de una estrategia de mejora continua del bienestar laboral y el desempeño']
+    },
+    {
+        id: 5,
+        title: '¿Por qué usar SIDO como herramienta de la NOM-035?',
+        content: 'Porque permite cumplir con la norma de manera:',
+        list: ['Más rápida (automatiza cálculos y gráficos)', 'Más eficiente (centraliza información y resultados)', 'Más estratégica (genera recomendaciones alineadas a los hallazgos)', 'Más humana (enfocada en el bienestar, el respeto y la motivación del personal)'],
+        afterlist: 'SIDO no solo verifica el cumplimiento legal, sino que lo transforma en una oportunidad para fortalecer la cultura organizacional y construir un ambiente de trabajo resiliente, justo y productivo.'
+    }
+]
+
+export const variablesTable = [
+    'Comunicación organizacional', 'Comunicación', 'Comunicación efectiva',
+    'Cohesión de equipo', 'Cohesión', 'Apoyo social en el trabajo',
+    'Claridad de rol y metas', 'Claridad de rol', 'Claridad de funciones',
+    'Reconocimiento laboral', 'Consideración', 'Reconocimiento del desempeño',
+    'Gestión de conflictos', 'Gestión de conflictos', 'Relaciones negativas o acoso',
+    'Liderazgo efectivo', 'Dirección', 'Liderazgo negativo o ineficiente',
+    'Desarrollo profesional', 'Desarrollo', 'Capacitación y desarrollo',
+    'Carga laboral equilibrada', 'Producción', 'Carga y ritmo de trabajo',
+    'Participación en decisiones', 'Compromiso', 'Participación y toma de decisiones',
+    'Motivación intrínseca', 'Moral', 'Motivación',
+    'Autonomía en el puesto', 'Autonomía (implícita en varias dimensiones)', 'Control sobre el trabajo',
+    'Clima emocional', 'Relaciones afectivas', 'Violencia laboral',
+    'Sistema de recompensas', 'Sistema de recompensas', 'Justicia organizacional',
+    'Innovación y apertura al cambio', 'Apertura de espíritu', 'Equilibrio trabajo-familia',
+    'Bienestar y resiliencia organizacional', 'Clima general (síntesis de dimensiones)', 'Sentido de pertenencia'
+]

@@ -61,9 +61,9 @@ export const getDeps = (name, callback) => {
 export const getKPIS = ([name, year], callback) => {
     let query
     switch (true) {
-        case /^[a-zA-Z]+$/.test(name): query = 'SELECT A, B , C, D, E, F, G, H, I, J, K, L, M, N FROM OCQresults WHERE depName = ? AND year = ?'
+        case /^[a-zA-Z]+$/.test(name): query = 'SELECT A, B, C, D, E, F, G, H, I, J, K, L, M, N FROM OCQresults WHERE depName = ? AND year = ?'
             break
-        case /\d/.test(name): query = 'SELECT A, B , C, D, E, F, G, H, I, J, K, L, M, N FROM OCQresults WHERE id_employee = (SELECT id_employee from Users WHERE Users.code = ?) AND year = ?'
+        case /\d/.test(name): query = 'SELECT A, B, C, D, E, F, G, H, I, J, K, L, M, N FROM OCQresults JOIN Users ON Users.id = OCQresults.id_employee WHERE Users.code = ? AND OCQresults.year= ?'
             break
     }
     db.query(query, [name, year], (err, results) => {
