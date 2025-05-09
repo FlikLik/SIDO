@@ -21,6 +21,10 @@
     background-color: cornflowerblue;
     border-color: #216baf;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: italic;
 }
 
 .input::placeholder {

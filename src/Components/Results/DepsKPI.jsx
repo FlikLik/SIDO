@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import styles from '../../Styles/depskpi.module.css'
+import styles2 from '../../Styles/general.module.css'
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Legend, Cell } from 'recharts'
 import { KPIS } from './KPIS.js'
 import { toast } from 'react-toastify'
@@ -23,6 +24,10 @@ export default function DepsKPI({ year }) {
             })
     }, [])
 
+    useEffect(() => {
+        setDeptsKpis([])
+    }, [year])
+
     const handleDepResult = (dep) => {
         let formattedData = []
         axios.post('http://localhost:3000/kpis', { name: dep, year: year })
@@ -43,7 +48,7 @@ export default function DepsKPI({ year }) {
     return (
         <div className='columns'>
             <div className='column is-one-quarter'>
-                <h1 className='title is-3'>Departamentos</h1>
+                <h1 className={'title is-3 ' + styles2.subtitle}>Departamentos</h1>
                 <div className='is-flex is-flex-direction-column'>
                     {
                         deps.length > 0 ? deps.map((dep, index) => (
@@ -61,7 +66,8 @@ export default function DepsKPI({ year }) {
             </div>
 
             <div className='column'>
-                <h1 className='title is-3'>Gráfico de Barra de KPIs</h1>
+                <h1 className={'title is-3 ' + styles2.subtitle}>Gráfico de Barra de KPIs</h1>
+                <h2 className={'title is-3 ' + styles2.subtitle}>Resultados del año: {year}</h2>
                 {
                     deptsKpis.length > 0 ? (
                         <ResponsiveContainer width='100%' height={400}>
@@ -87,7 +93,7 @@ export default function DepsKPI({ year }) {
                         <figure>
                             <img src="404notfound.svg" alt="404 not found" width={200} height={200} />
                         </figure>
-                        <p>Cargando...</p>
+                        <p>Sin nada que mostrar...</p>
                     </div>
                 }
             </div>

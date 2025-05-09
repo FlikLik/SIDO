@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import styles from '../../Styles/general.module.css'
 
 export default function DespOrg() {
 
@@ -37,7 +38,7 @@ export default function DespOrg() {
     return (
         <div className='has-text-centered'>
             <div className="table-container">
-                <table className="table is-hoverable is-fullwidth">
+                <table className={"table is-hoverable is-fullwidth is-bordered " + styles.table}>
                     <thead>
                         <tr>
                             <th className="has-text-centered">Etapa de evolución</th>
@@ -45,7 +46,7 @@ export default function DespOrg() {
                             <th className="has-text-centered">Porcentaje de desperdicio</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody >
                         <tr>
                             <td className="has-text-centered">I. Control de calidad convencional</td>
                             <td className="has-text-centered">0% - 40%</td>
@@ -71,7 +72,7 @@ export default function DespOrg() {
             </div>
             <br />
             <div>
-                <h2 className='title is-3'>Con un porcentaje de avance del {data.advance}% y un porcentaje de desperdicio del {data.waste}% <br />
+                <h2 className={'title is-4 ' + styles.text}>Con un porcentaje de avance del {data.advance}% y un porcentaje de desperdicio del {data.waste}% <br />
                     La empresa se encuentra en la etapa: {phase}
                 </h2>
             </div>

@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer, Tooltip } from 'recharts';
 import { KPIS } from './KPIS.js'
 import { toast } from 'react-toastify'
+import styles from '../../Styles/general.module.css'
 
 export default function Employees({ year }) {
 
@@ -24,6 +25,11 @@ export default function Employees({ year }) {
             })
     }, [])
 
+    useEffect(() => {
+        setEmployeeData([])
+        setChartData([])
+    }, [year])
+
     const handleEmployeeData = (selectedEmployee) => {
         axios.post('http://localhost:3000/employeesData', { code: selectedEmployee })
             .then(response => {
@@ -31,7 +37,7 @@ export default function Employees({ year }) {
                 setEmployeeData(response.data)
             })
             .catch(error => {
-                toast.error('Error al conectar al servidor: Employees Failure')
+                toast.error('Error, respuesta sin datos')
                 console.log(error)
             })
     }
@@ -45,14 +51,13 @@ export default function Employees({ year }) {
                 // eslint-disable-next-line no-unused-vars
                 Object.entries(response.data[0]).forEach(([key, value], index) => {
                     formattedData.push({ name: KPIS[index], value: value })
-                }
-                )
+                })
                 setChartData(formattedData)
                 setAvatarUrl(avatarUrl)
                 handleEmployeeData(e.target.value)
             })
             .catch(error => {
-                toast.error('Error al conectar al servidor: Employees Failure')
+                toast.error('Error, respuesta sin datos')
                 console.log(error)
             })
     }
@@ -60,7 +65,7 @@ export default function Employees({ year }) {
     return (
         <div className='columns'>
             <div className='column is-one-quarter'>
-                <h1 className='title is-3'>Empleados</h1>
+                <h1 className={'title is-3 ' + styles.subtitle}>Empleados</h1>
                 <div className="select is-primary is-rounded">
                     <select name="employees" id="employees" onChange={handleChange}>
                         <option value="0">Seleccione un empleado</option>
@@ -76,18 +81,19 @@ export default function Employees({ year }) {
                 <br />
                 {
                     (avatarUrl.length > 0 && employeeData.length > 0) && (
-                        <div>
+                        <div className={styles.text}>
                             <img src={avatarUrl} alt="avatar" width={150} className='mt-5' />
                             <br />
                             <p className='subtitle is-4 has-text-black'><strong>Posición:</strong> {employeeData[0].position}</p>
                             <p className='subtitle is-4 has-text-black'><strong>Departamento:</strong> {employeeData[0].area}</p>
+                            <p className='subtitle is-4 has-text-black'><strong>Resultados del año:</strong> {year}</p>
                         </div>
                     )
                 }
             </div>
 
             <div className='column'>
-                <h1 className='title is-3'>Gráfico Radar de KPIs</h1>
+                <h1 className={'title is-3 ' + styles.subtitle}>Gráfico Radar de KPIs</h1>
                 {
                     chartData.length > 0 ? (
                         <ResponsiveContainer width='100%' height={400}>
@@ -103,7 +109,7 @@ export default function Employees({ year }) {
                         <figure>
                             <img src="404notfound.svg" alt="404 not found" width={200} height={200} />
                         </figure>
-                        <p>Cargando...</p>
+                        <p>Sin nada que mostrar...</p>
                     </div>
                 }
             </div>

@@ -90,6 +90,14 @@ app.post('/employeesData', (req, res) => {
     })
 })
 
+app.post('/employeesComparasion', (req, res) => {
+    const { name } = req.body
+    queries.getEmployeesBothYears([name], (err, results) => {
+        if (err) throw err
+        res.send(results)
+    })
+})
+
 app.listen(3000, () => {
     console.log('Server is running on port 3000')
 })

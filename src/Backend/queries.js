@@ -72,7 +72,8 @@ export const getKPIS = ([name, year], callback) => {
     })
 }
 
-export const getEmployees = (company, callback) => {
+//Senttencia que devuelve los empleados de acuerdo al nombre de la empresa que tiene el mismo nombre que el que se le pasa por parametro
+export const getEmployees = ([company], callback) => {
     const query = 'SELECT Users.code FROM Users JOIN Companies ON Users.id_company = Companies.id WHERE Companies.name = ?'
     db.query(query, [company], (err, results) => {
         if (err) throw err
@@ -80,10 +81,20 @@ export const getEmployees = (company, callback) => {
     })
 }
 
+//Sentencia que devuelve los datos de los empleados de acuerdo al código que se le pase cómo parámetro
 export const getEmployeesData = ([code], callback) => {
     const query = 'SELECT position, area FROM Users WHERE code = ?'
     db.query(query, [code], (err, results) => {
         if (err) throw err
         return callback(null, results)
     })
-} 
+}
+
+//Sentencia que devuelve la lista de empleados cuyos resuultados de KPIs fueron tomados en 2024 y 2025
+export const getEmployeesBothYears = ([name], callback) => {
+    const query = 'SELECT DISTINCT Users.code FROM OCQresults JOIN Users ON OCQresults.id_employee = Users.id JOIN Companies ON Users.id_company = Companies.id WHERE OCQresults.year IN (2024, 2025) AND Companies.name = ? GROUP BY Users.code HAVING COUNT(DISTINCT OCQresults.year) = 2 ORDER BY Users.id'
+    db.query(query, [name], (err, results) => {
+        if (err) throw err
+        return callback(null, results)
+    })
+}

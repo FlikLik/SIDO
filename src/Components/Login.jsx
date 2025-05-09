@@ -19,7 +19,6 @@ export default function Login() {
         axios.post('http://localhost:3000/company', { code })
             .then(response => {
                 localStorage.setItem('company', response.data.name)
-                console.log(localStorage.getItem('company'))
             })
             .catch(error => {
                 console.log(error)

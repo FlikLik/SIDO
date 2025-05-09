@@ -15,7 +15,7 @@
 }
 
 .button:hover {
-    background-color: #fff;
+    background-color: #ffffffa1;
     color: #336886;
     border: 2px solid #336886;
     box-shadow: 5px 5px 0px #336886;
@@ -23,6 +23,93 @@
 
 .button:active {
     background-color: #fcf414;
+    box-shadow: none;
+    transform: translateY(4px);
+}
+
+.button2 {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #af6faf;
+    border: 2px solid #000;
+    border-radius: 10px;
+    box-shadow: 5px 5px 0px #000;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.button2:hover {
+    background-color: #ffffffa1;
+    color: #af6faf;
+    border: 2px solid #af6faf;
+    box-shadow: 5px 5px 0px #af6faf;
+}
+
+.button2:active {
+    background-color: #ffccdd;
+    box-shadow: none;
+    transform: translateY(4px);
+}
+
+.button3 {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #876faf;
+    border: 2px solid #000;
+    border-radius: 10px;
+    box-shadow: 5px 5px 0px #000;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.button3:hover {
+    background-color: #ffffffa1;
+    color: #876faf;
+    border: 2px solid #876faf;
+    box-shadow: 5px 5px 0px #876faf;
+}
+
+.button3:active {
+    background-color: #f5e1da;
+    box-shadow: none;
+    transform: translateY(4px);
+}
+
+.button4 {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #6faf8c;
+    border: 2px solid #000;
+    border-radius: 10px;
+    box-shadow: 5px 5px 0px #000;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.button4:hover {
+    background-color: #ffffffa1;
+    color: #6faf8c;
+    border: 2px solid #6faf8c;
+    box-shadow: 5px 5px 0px #6faf8c;
+}
+
+.button4:active {
+    background-color: #d1d1d1;
     box-shadow: none;
     transform: translateY(4px);
 }
