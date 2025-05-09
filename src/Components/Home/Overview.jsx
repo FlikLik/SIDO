@@ -9,7 +9,7 @@ export default function Overview() {
     const [companies, setCompanies] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:3000/companies')
+        axios.get('https://sido-9e7g.onrender.com/companies')
             .then(res => setCompanies(res.data))
             .catch(err => console.log(err))
     }, [])
@@ -33,7 +33,7 @@ export default function Overview() {
                                             <figure>
                                                 <img src={item.img} alt={item.img} width={150} height={150} />
                                             </figure>
-                                            <h1 className={"title " + styles2.title}> {item.label} </h1>
+                                            <h1 className={"title " + styles2.title2}> {item.label} </h1>
                                         </div>
                                     )}
                                 {

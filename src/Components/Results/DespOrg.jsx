@@ -10,7 +10,7 @@ export default function DespOrg() {
     useEffect(() => {
         const name = localStorage.getItem('company')
         const year = '2024'
-        axios.post('http://localhost:3000/desperdicio', { name, year })
+        axios.post('https://sido-9e7g.onrender.com/desperdicio', { name, year })
             .then(response => {
                 setData({ advance: response.data.advance, waste: response.data.waste })
                 detAdvanceDesp(response.data.advance, response.data.waste)

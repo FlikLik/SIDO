@@ -14,7 +14,7 @@ export default function Depssummary() {
 
     useEffect(() => {
         const name = localStorage.getItem('company')
-        axios.post('http://localhost:3000/departments', { name })
+        axios.post('https://sido-9e7g.onrender.com/departments', { name })
             .then(response => {
                 setDeps(response.data)
             })
@@ -27,7 +27,7 @@ export default function Depssummary() {
     const handleClick = (dep) => {
         let formattedData = []
         setSelectedDep(dep)
-        axios.post('http://localhost:3000/kpis', { name: dep, year: 2024 })
+        axios.post('https://sido-9e7g.onrender.com/kpis', { name: dep, year: 2024 })
             .then(response => {
                 //eslint-disable-next-line no-unused-vars
                 Object.entries(response.data[0]).forEach(([key, value], index) => {
@@ -40,7 +40,7 @@ export default function Depssummary() {
                 console.log(error)
             })
         let formattedData2 = []
-        axios.post('http://localhost:3000/kpis', { name: dep, year: 2025 })
+        axios.post('https://sido-9e7g.onrender.com/kpis', { name: dep, year: 2025 })
             .then(response => {
                 //eslint-disable-next-line no-unused-vars
                 Object.entries(response.data[0]).forEach(([key, value], index) => {

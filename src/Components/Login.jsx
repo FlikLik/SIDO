@@ -16,7 +16,7 @@ export default function Login() {
     }, [isAuth, navigate])
 
     const searchCompany = (code) => {
-        axios.post('http://localhost:3000/company', { code })
+        axios.post('https://sido-9e7g.onrender.com/company', { code })
             .then(response => {
                 localStorage.setItem('company', response.data.name)
             })
@@ -28,7 +28,7 @@ export default function Login() {
     const handleSubmit = (e) => {
         e.preventDefault()
         const loading = toast.loading('Buscando usuario...', { className: styles.toastLoading })
-        axios.post('http://localhost:3000/login', { code })
+        axios.post('https://sido-9e7g.onrender.com/login', { code })
             .then(response => {
                 if (response.data.count === 0) {
                     toast.update(loading, { render: 'Usuario no encontrado', type: 'error', isLoading: false, autoClose: 3000, className: styles.toastError })

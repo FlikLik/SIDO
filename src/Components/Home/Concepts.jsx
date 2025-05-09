@@ -58,7 +58,7 @@ export default function Concepts() {
 
     return (
         <div className="container has-text-centered mt-6">
-            <h1 className={"title is-1 " + styles2.title1}>Definiciones</h1>
+            <h1 className={"title " + styles2.title1}>Definiciones</h1>
 
             <div className="columns has-text-black mt-3">
                 <div className="column is-one-quarter">

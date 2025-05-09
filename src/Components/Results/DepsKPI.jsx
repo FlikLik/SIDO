@@ -14,7 +14,7 @@ export default function DepsKPI({ year }) {
 
     useEffect(() => {
         const name = localStorage.getItem('company')
-        axios.post('http://localhost:3000/departments', { name })
+        axios.post('https://sido-9e7g.onrender.com/departments', { name })
             .then(response => {
                 setDeps(response.data)
             })
@@ -30,7 +30,7 @@ export default function DepsKPI({ year }) {
 
     const handleDepResult = (dep) => {
         let formattedData = []
-        axios.post('http://localhost:3000/kpis', { name: dep, year: year })
+        axios.post('https://sido-9e7g.onrender.com/kpis', { name: dep, year: year })
             .then(response => {
                 // eslint-disable-next-line no-unused-vars
                 Object.entries(response.data[0]).forEach(([key, value], index) => {

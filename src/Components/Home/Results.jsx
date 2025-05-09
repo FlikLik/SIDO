@@ -12,7 +12,7 @@ export default function Results() {
     return (
         <div className="container has-text-centered mt-6">
             <h1 className={"title is-1 " + styles.title1}>Resultados</h1>
-            <h2 className={"title is-2 " + styles.subtitle}>Viendo resultados para la empresa: {localStorage.getItem('company')}</h2>
+            <h2 className={"title is-3 " + styles.subtitle}>Viendo resultados para la empresa: {localStorage.getItem('company')}</h2>
             <br />
             <div className="fixed-grid has-1-cols-mobile">
                 <div className="grid">

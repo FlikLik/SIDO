@@ -15,7 +15,7 @@ export default function Employeessummary() {
 
     useEffect(() => {
         const name = localStorage.getItem('company')
-        axios.post('http://localhost:3000/employeesComparasion', { name })
+        axios.post('https://sido-9e7g.onrender.com/employeesComparasion', { name })
             .then(response => {
                 setEmployees(response.data)
             })
@@ -26,7 +26,7 @@ export default function Employeessummary() {
     }, [])
 
     const handleEmployeeData = (selectedEmployee) => {
-        axios.post('http://localhost:3000/employeesData', { code: selectedEmployee })
+        axios.post('https://sido-9e7g.onrender.com/employeesData', { code: selectedEmployee })
             .then(response => {
                 setEmployeeData(response.data)
             })
@@ -40,7 +40,7 @@ export default function Employeessummary() {
         let formattedData = []
         const seed = seeds[Math.floor(Math.random() * seeds.length)]
         const avatarUrl = `https://api.dicebear.com/5.x/pixel-art/svg?seed=${seed}`
-        axios.post('http://localhost:3000/kpis', { name: e.target.value, year: 2024 })
+        axios.post('https://sido-9e7g.onrender.com/kpis', { name: e.target.value, year: 2024 })
             .then(response => {
                 // eslint-disable-next-line no-unused-vars
                 Object.entries(response.data[0]).forEach(([key, value], index) => {
@@ -55,7 +55,7 @@ export default function Employeessummary() {
                 console.log(error)
             })
         let formattedData2 = []
-        axios.post('http://localhost:3000/kpis', { name: e.target.value, year: 2025 })
+        axios.post('https://sido-9e7g.onrender.com/kpis', { name: e.target.value, year: 2025 })
             .then(response => {
                 // eslint-disable-next-line no-unused-vars
                 Object.entries(response.data[0]).forEach(([key, value], index) => {

@@ -23,7 +23,7 @@ export default function ECAIres() {
     useEffect(() => {
         const name = localStorage.getItem('company')
         const year = '2024'
-        axios.post('http://localhost:3000/ecairesults', { name, year })
+        axios.post('https://sido-9e7g.onrender.com/ecairesults', { name, year })
             .then(response => {
                 const formattedData = [
                     { name: 'Educación', value: response.data.eValue },
