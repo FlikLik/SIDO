@@ -4,9 +4,9 @@ dotenv.config()
 
 export const db = createConnection({
     host: process.env.REACT_APP_DB_HOST,
-    user: process.env.REACT_APP_DB_USER,
+    database: process.env.REACT_APP_DB_NAME,
     password: process.env.REACT_APP_DB_PASSWORD,
-    database: process.env.REACT_APP_DB_DB,
+    user: process.env.REACT_APP_DB_USER,
 })
 
 db.connect((err) => {
