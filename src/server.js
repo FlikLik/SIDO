@@ -50,6 +50,14 @@ app.post('/ecairesults', (req, res) => {
     })
 })
 
+app.post('/nomresults', (req, res) => {
+    const { name, guide } = req.body
+    queries.getNOMRes([name, guide], (err, results) => {
+        if (err) throw err
+        res.send(results)
+    })
+})
+
 app.post('/desperdicio', (req, res) => {
     const { name, year } = req.body
     queries.getCompanyDesp([name, year], (err, results) => {

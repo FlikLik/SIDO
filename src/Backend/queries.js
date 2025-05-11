@@ -48,6 +48,15 @@ export const getCompanyDesp = ([name, year], callback) => {
     })
 }
 
+//Sentencia que devuelve los resultados de la NOM-035 para la empresa que tiene el mismo nombre que el que se le pasa por parametro
+export const getNOMRes = ([name, guide], callback) => {
+    const query = 'SELECT domain, rate, interpretation FROM NOMresults JOIN Companies ON NOMresults.id_company = Companies.id WHERE Companies.name = ? AND guide = ?'
+    db.query(query, [name, guide], (err, results) => {
+        if (err) throw err
+        return callback(null, results)
+    })
+}
+
 //Sentencia que devuelve los departamentos de la empresa que tiene el mismo nombre que el que se le pasa por parametro
 export const getDeps = (name, callback) => {
     const query = 'SELECT DISTINCT Users.area FROM Users WHERE Users.id_company = (SELECT id FROM Companies WHERE Companies.name = ?)'
