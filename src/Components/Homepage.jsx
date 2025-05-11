@@ -5,7 +5,7 @@ import Overview from './Home/Overview'
 import Concepts from './Home/Concepts'
 import Results from './Home/Results'
 import Summary from './Home/Summary'
-
+import Footer from './Footer'
 
 export default function Homepage() {
 
@@ -26,6 +26,7 @@ export default function Homepage() {
                 {activeTab === 'Results' && <Results />}
                 {activeTab === 'Summary' && <Summary />}
             </div>
+            <Footer />
         </>
     )
 }

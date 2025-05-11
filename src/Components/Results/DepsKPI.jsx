@@ -74,7 +74,7 @@ export default function DepsKPI({ year }) {
                             <BarChart data={deptsKpis}>
                                 <XAxis dataKey='name' />
                                 <YAxis domain={[0, 5]} />
-                                <Tooltip />
+                                <Tooltip wrapperStyle={{ color: 'black', fontSize: '18px', fontWeight: 'bold' }} />
                                 <Legend payload={deptsKpis.map((entry, index) => ({
                                     value: entry.name,
                                     id: index,

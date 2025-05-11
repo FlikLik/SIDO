@@ -84,9 +84,9 @@ export default function Employees({ year }) {
                         <div className={styles.text}>
                             <img src={avatarUrl} alt="avatar" width={150} className='mt-5' />
                             <br />
-                            <p className='subtitle is-4 has-text-black'><strong>Posición:</strong> {employeeData[0].position}</p>
-                            <p className='subtitle is-4 has-text-black'><strong>Departamento:</strong> {employeeData[0].area}</p>
-                            <p className='subtitle is-4 has-text-black'><strong>Resultados del año:</strong> {year}</p>
+                            <p className='subtitle is-4 has-text-black'><strong className={styles.subtitle}>Posición:</strong> {employeeData[0].position}</p>
+                            <p className='subtitle is-4 has-text-black'><strong className={styles.subtitle}>Departamento:</strong> {employeeData[0].area}</p>
+                            <p className='subtitle is-4 has-text-black'><strong className={styles.subtitle}>Resultados del año:</strong> {year}</p>
                         </div>
                     )
                 }
@@ -98,11 +98,11 @@ export default function Employees({ year }) {
                     chartData.length > 0 ? (
                         <ResponsiveContainer width='100%' height={400}>
                             <RadarChart cx="50%" cy="50%" outerRadius={150} width={600} height={600} data={chartData}>
-                                <PolarGrid />
-                                <PolarAngleAxis dataKey="name" />
-                                <PolarRadiusAxis domain={[0, 5]} />
-                                <Tooltip />
-                                <Radar name="Evaluacion" dataKey="value" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
+                                <PolarGrid stroke='white' strokeWidth={1} />
+                                <PolarAngleAxis dataKey="name" tick={{ fontSize: '16px', fill: 'black', fontWeight: 'bold' }} />
+                                <PolarRadiusAxis domain={[0, 5]} fill='black' tick={{ fontSize: '16px', fill: 'white', fontWeight: 'bold' }} />
+                                <Tooltip wrapperStyle={{ color: 'black', fontSize: '18px', fontWeight: 'bold' }} />
+                                <Radar name="Evaluacion" dataKey="value" fill="brown" fillOpacity={0.8} />
                             </RadarChart>
                         </ResponsiveContainer>
                     ) : <div className='has-text-centered is-size-2 has-text-black' style={{ opacity: 0.5 }}>

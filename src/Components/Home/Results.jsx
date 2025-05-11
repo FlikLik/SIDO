@@ -1,6 +1,7 @@
 import ECAIres from '../Results/ECAIres'
 import DespOrg from '../Results/DespOrg'
 import DepsKPI from '../Results/DepsKPI'
+import NOMres from '../Results/NOMres'
 import Employees from '../Results/Employees'
 import { useState } from 'react'
 import styles from '../../Styles/general.module.css'
@@ -25,6 +26,8 @@ export default function Results() {
                         <DespOrg />
                     </div>
                 </div>
+                <h1 className={'title is-2 ' + styles.title2}>Resultados de la NOM-035</h1>
+                <NOMres />
                 <h1 className={"title is-2 " + styles.title2}>Análisis de KPIs</h1>
                 <div className='control'>
                     <label className="radio title is-3 mr-4">

@@ -53,7 +53,7 @@ export default function Overview() {
             <br />
             <div className="fixed-grid has-2-cols mt-6 has-1-cols-mobile">
                 {
-                    companies.map((company) => (
+                    companies.length > 0 ? (companies.map((company) => (
                         <div key={company.id} className="grid has-text-centered">
                             <div className="cell mb-6">
                                 <div>
@@ -69,7 +69,12 @@ export default function Overview() {
                             </div>
                             <br />
                         </div>
-                    ))
+                    ))) : <div className='has-text-centered is-size-2 has-text-black' style={{ opacity: 0.5 }}>
+                        <figure>
+                            <img src="404notfound.svg" alt="404 not found" width={200} height={200} />
+                        </figure>
+                        <p>Sin nada que mostrar...</p>
+                    </div>
                 }
             </div>
         </div>
