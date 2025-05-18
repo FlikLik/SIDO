@@ -35,6 +35,8 @@ export default function Register() {
         }
         axios.post('https://sido-9e7g.onrender.com/submit', { name: companiesAnswers.name, line: companiesAnswers.line, mision: companiesAnswers.mision, vision: companiesAnswers.vision, code: generateCode(), position: usersAnswers.position, area: usersAnswers.area, isAdmin: 1 })
             .then(response => {
+                console.log(response)
+
                 if (response.data.length === 0) {
                     toast.update(loading, { render: 'Error al conectar', type: 'error', isLoading: false, autoClose: 3000, className: styles2.toastError })
                 }

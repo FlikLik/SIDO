@@ -120,6 +120,7 @@ const searchCompany = ([name], callback) => {
     const query = 'SELECT id FROM Companies WHERE name = ?'
     db.query(query, [name], (err, results) => {
         if (err) throw err
+        console.log(callback)
         return callback(null, results)
     })
 }
