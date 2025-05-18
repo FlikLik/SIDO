@@ -116,19 +116,9 @@ export const insertCompany = ([name, line, mision, vision], callback) => {
     })
 }
 
-const searchCompany = ([name], callback) => {
-    const query = 'SELECT id FROM Companies WHERE name = ?'
-    db.query(query, [name], (err, results) => {
-        if (err) throw err
-        console.log(callback)
-        return callback(null, results)
-    })
-}
-
-export const insertUser = ([name, code, position, area, isAdmin], callback) => {
-    const idCompany = searchCompany(name)
+export const insertUser = ([code, id_Company, position, area, isAdmin], callback) => {
     const query = 'INSERT INTO Users (code, id_Company, position, area, isAdmin) VALUES (?, ?, ?, ?, ?)'
-    db.insert(query, [code, idCompany[0].id, position, area, isAdmin], (err, results) => {
+    db.query(query, [code, id_Company, position, area, isAdmin], (err, results) => {
         if (err) throw err
         return callback(null, results)
     })

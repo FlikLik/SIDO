@@ -106,14 +106,19 @@ app.post('/employeesComparasion', (req, res) => {
     })
 })
 
-app.post('/submit', (req, res) => {
-    const { name, line, mision, vision, code, position, area, isAdmin } = req.body
+app.post('/submitCompany', (req, res) => {
+    const { name, line, mision, vision } = req.body
     queries.insertCompany([name, line, mision, vision], (err, results) => {
-        if (err) console.log('Error al insertar company', err)
-        queries.insertUser([name, code, position, area, isAdmin], (err, results) => {
-            if (err) console.log('Error al insertar user', err)
-            res.send(results)
-        })
+        if (err) throw err
+        res.send(results)
+    })
+})
+
+app.post('/submitUser', (req, res) => {
+    const { code, id_Company, position, area, isAdmin } = req.body
+    queries.insertUser([code, id_Company, position, area, isAdmin], (err, results) => {
+        if (err) throw err
+        res.send(results)
     })
 })
 
