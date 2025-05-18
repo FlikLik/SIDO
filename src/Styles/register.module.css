@@ -1,0 +1,18 @@
+.form {
+    margin: auto;
+    width: fit-content;
+}
+
+.Toastify__progress-bar--error {
+    background-color: #ff0000 !important;
+}
+
+.toastLoading {
+    background-color: #506afcd7 !important;
+    color: white !important;
+}
+
+.toastError {
+    background-color: #d87d71d7 !important;
+    color: white !important;
+}

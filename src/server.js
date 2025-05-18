@@ -106,6 +106,17 @@ app.post('/employeesComparasion', (req, res) => {
     })
 })
 
+app.post('/submit', (req, res) => {
+    const { name, line, mision, vision, code, position, area, isAdmin } = req.body
+    queries.insertCompany([name, line, mision, vision], (err, results) => {
+        if (err) throw err
+        queries.insertUser([name, code, position, area, isAdmin], (err, results) => {
+            if (err) throw err
+            res.send(results)
+        })
+    })
+})
+
 app.listen(3000, () => {
     console.log('Server is running on port 3000')
 })

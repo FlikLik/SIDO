@@ -77,7 +77,7 @@ export default function Concepts() {
                     <div className={styles.conceptContainer}>
                         {
                             concepts.content &&
-                            <p className={'is-size-5 has-text-justified ' + styles2.text}>{concepts.content}</p>
+                            <p className={'is-size-5 has-text-justified has-text-black ' + styles2.text}>{concepts.content}</p>
 
                         }
                         {
@@ -94,7 +94,7 @@ export default function Concepts() {
                             {
                                 concepts.list &&
                                 concepts.list.map((item, index) => (
-                                    <li key={index} className='is-size-5 ml-5'>{item}</li>
+                                    <li key={index} className='is-size-5 ml-5 has-text-black'>{item}</li>
                                 ))
                             }
                         </ul>

@@ -107,3 +107,29 @@ export const getEmployeesBothYears = ([name], callback) => {
         return callback(null, results)
     })
 }
+
+export const insertCompany = ([name, line, mision, vision], callback) => {
+    const query = 'INSERT INTO Companies (name, line, mision, vision) VALUES (?, ?, ?, ?)'
+    db.query(query, [name, line, mision, vision], (err, results) => {
+        if (err) throw err
+        return callback(null, results)
+    })
+}
+
+const searchCompany = ([name], callback) => {
+    const query = 'SELECT id FROM Companies WHERE name = ?'
+    db.query(query, [name], (err, results) => {
+        if (err) throw err
+        return callback(null, results)
+    })
+}
+
+export const insertUser = ([name, code, position, area, isAdmin], callback) => {
+    const idCompany = searchCompany(name)
+    const query = 'INSERT INTO Users (code, id_Company, position, area, isAdmin) VALUES (?, ?, ?, ?, ?)'
+    db.query(query, [code, idCompany[0].id, position, area, isAdmin], (err, results) => {
+        if (err) throw err
+        return callback(null, results)
+    })
+}
+

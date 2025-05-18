@@ -9,6 +9,7 @@ import { toast } from 'react-toastify'
 export default function DepsKPI({ year }) {
 
     const [deps, setDeps] = useState([])
+    const [selectedDep, setSelectedDep] = useState([])
     const [deptsKpis, setDeptsKpis] = useState([])
     const colors = ['#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#A133FF', '#33FFF5', '#FF8333', '#FFD133', '#33D1FF', '#FF333D', '#33FFA1', '#D133FF', '#8333FF', '#F5FF33']
 
@@ -37,6 +38,7 @@ export default function DepsKPI({ year }) {
                     formattedData.push({ name: KPIS[index], value: value })
                 }
                 )
+                setSelectedDep(dep)
                 setDeptsKpis(formattedData)
             })
             .catch(error => {
@@ -71,6 +73,7 @@ export default function DepsKPI({ year }) {
                 {
                     deptsKpis.length > 0 ? (
                         <ResponsiveContainer width='100%' height={400}>
+                            <h2 className={'title is-3 ' + styles2.subtitle}>Datos del departamento: {selectedDep}</h2>
                             <BarChart data={deptsKpis}>
                                 <XAxis dataKey='name' />
                                 <YAxis domain={[0, 5]} />

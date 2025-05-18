@@ -4,6 +4,7 @@ import ProtectedRoute from './Backend/AuthControl/ProtectedRoute.jsx'
 import Login from './Components/Login.jsx'
 import Homepage from './Components/Homepage.jsx'
 import Survey from './Components/Survey.jsx'
+import Register from './Components/Register.jsx'
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={isAuth ? <Navigate to="/home" replace /> : <Login />} />
         <Route path="/home" element={<ProtectedRoute> <Homepage /> </ProtectedRoute>} />
         <Route path="/survey" element={<Survey />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
       <ToastContainer transition={Flip} />
     </BrowserRouter>

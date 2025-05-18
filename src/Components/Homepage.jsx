@@ -26,6 +26,8 @@ export default function Homepage() {
                 {activeTab === 'Results' && <Results />}
                 {activeTab === 'Summary' && <Summary />}
             </div>
+            <br />
+            <br />
             <Footer />
         </>
     )

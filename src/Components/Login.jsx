@@ -70,7 +70,7 @@ export default function Login() {
                         <img src="key.svg" alt="key" width={35} height={35} />
                     </span>
                     <br />
-                    <button type='submit' className='button is-info' onClick={handleSubmit}>Login</button>
+                    <button type='submit' className='button is-info mt-3' onClick={handleSubmit}>Login</button>
                     {
                         showLoader &&
                         (
@@ -80,6 +80,8 @@ export default function Login() {
                         )
                     }
                 </form>
+                <br />
+                <h3 className='subtitle is-6 has-text-centered has-text-weight-bold is-italic has-text-link' onClick={() => navigate('/register')} style={{ cursor: 'pointer' }}> ¿No tienes usuario? Regístrate aquí</h3>
             </section>
             <br />
             <h4 className={'subtitle is-4 has-text-centered has-text-weight-bold ' + styles.subtitle}>

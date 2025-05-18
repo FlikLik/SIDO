@@ -117,6 +117,7 @@
 .conceptContainer {
     height: 32rem;
     overflow: auto;
+    color: #000;
 }
 
 .list {
