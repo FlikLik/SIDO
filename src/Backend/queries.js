@@ -127,7 +127,7 @@ const searchCompany = ([name], callback) => {
 export const insertUser = ([name, code, position, area, isAdmin], callback) => {
     const idCompany = searchCompany(name)
     const query = 'INSERT INTO Users (code, id_Company, position, area, isAdmin) VALUES (?, ?, ?, ?, ?)'
-    db.query(query, [code, idCompany[0].id, position, area, isAdmin], (err, results) => {
+    db.insert(query, [code, idCompany[0].id, position, area, isAdmin], (err, results) => {
         if (err) throw err
         return callback(null, results)
     })
