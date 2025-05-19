@@ -132,6 +132,15 @@ app.post('/submitUser', (req, res) => {
 
 
 //Gets generales
+app.post('/getUsers', (req, res) => {
+    const { name } = req.body
+    queries.getUsers([name], (err, results) => {
+        if (err) throw err
+        res.send(results)
+    })
+})
+
+
 app.post('/getECAI', (req, res) => {
     const { name } = req.body
     queries.getECAI([name], (err, results) => {
@@ -150,8 +159,24 @@ app.post('/addECAI', (req, res) => {
     })
 })
 
+app.post('/addUser', (req, res) => {
+    const { code, name, position, area, isAdmin } = req.body
+    queries.addUser([code, name, position, area, isAdmin], (err, results) => {
+        if (err) throw err
+        res.send(results)
+    })
+})
 
 //Edits generales
+app.post('/editUser', (req, res) => {
+    const { id, position, area, isAdmin } = req.body
+    queries.editUser([id, position, area, isAdmin], (err, results) => {
+        if (err) throw err
+        res.send(results)
+    })
+})
+
+
 app.post('/editECAI', (req, res) => {
     const { id, eduVal, capVal, adiVal, insVal, advance, waste, year } = req.body
     queries.updateECAI([id, eduVal, capVal, adiVal, insVal, advance, waste, year], (err, results) => {
@@ -161,6 +186,15 @@ app.post('/editECAI', (req, res) => {
 })
 
 //Eliminaciones generales
+app.post('/deleteUser', (req, res) => {
+    const { id } = req.body
+    queries.deleteUser([id], (err, results) => {
+        if (err) throw err
+        res.send(results)
+    })
+})
+
+
 app.post('/deleteECAI', (req, res) => {
     const { id } = req.body
     queries.deleteECAI([id], (err, results) => {

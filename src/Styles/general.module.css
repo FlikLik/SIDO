@@ -49,6 +49,11 @@
     background-color: #444444;
 }
 
+.table {
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
 .table td,
 .table thead th {
     color: #ffffff
