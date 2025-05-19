@@ -1,17 +1,25 @@
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styles from '../../Styles/header.module.css'
 
 export default function Header({ activeTab, setActiveTab }) {
 
     const navigate = useNavigate()
-    const tabs = ['Overview', 'Concepts', 'Results', 'Summary']
+    const [tabs, setTabs] = useState(['Overview', 'Concepts', 'Results', 'Summary'])
 
     const handleLogout = (e) => {
         e.preventDefault()
         localStorage.removeItem('isAuth')
         localStorage.removeItem('company')
+        localStorage.removeItem('isAdmin')
         navigate('/', { replace: true })
     }
+
+    useEffect(() => {
+        if (localStorage.getItem('isAdmin') === '1') {
+            setTabs(['Overview', 'Concepts', 'Results', 'Summary', 'Control Panel'])
+        }
+    }, [])
 
     return (
         <section className={"hero is-small is-primary " + styles.heroStyle}>

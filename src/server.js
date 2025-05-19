@@ -23,6 +23,14 @@ app.post('/login', (req, res) => {
     })
 })
 
+app.post('/isAdmin', (req, res) => {
+    const { code } = req.body
+    queries.getIsAdmin([code], (err, results) => {
+        if (err) throw err
+        res.send({ isAdmin: results[0].isAdmin })
+    })
+})
+
 
 //Endpoint que recibe el code del usuario y devuelve el nombre de la empresa que tiene el mismo code
 //Se utiliza para buscar el nombre de la empresa en la base de datos
@@ -117,6 +125,45 @@ app.post('/submitCompany', (req, res) => {
 app.post('/submitUser', (req, res) => {
     const { code, id_Company, position, area, isAdmin } = req.body
     queries.insertUser([code, id_Company, position, area, isAdmin], (err, results) => {
+        if (err) throw err
+        res.send(results)
+    })
+})
+
+
+//Gets generales
+app.post('/getECAI', (req, res) => {
+    const { name } = req.body
+    queries.getECAI([name], (err, results) => {
+        if (err) throw err
+        res.send(results)
+    })
+})
+
+
+//Inserciones generales
+app.post('/addECAI', (req, res) => {
+    const { name, eduVal, capVal, adiVal, insVal, advance, waste, year } = req.body
+    queries.insertECAI([name, eduVal, capVal, adiVal, insVal, advance, waste, year], (err, results) => {
+        if (err) throw err
+        res.send(results)
+    })
+})
+
+
+//Edits generales
+app.post('/editECAI', (req, res) => {
+    const { id, eduVal, capVal, adiVal, insVal, advance, waste, year } = req.body
+    queries.updateECAI([id, eduVal, capVal, adiVal, insVal, advance, waste, year], (err, results) => {
+        if (err) throw err
+        res.send(results)
+    })
+})
+
+//Eliminaciones generales
+app.post('/deleteECAI', (req, res) => {
+    const { id } = req.body
+    queries.deleteECAI([id], (err, results) => {
         if (err) throw err
         res.send(results)
     })

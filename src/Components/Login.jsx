@@ -25,6 +25,16 @@ export default function Login() {
             })
     }
 
+    const isAdmin = (code) => {
+        axios.post('https://sido-9e7g.onrender.com/isAdmin', { code })
+            .then(response => {
+                localStorage.setItem('isAdmin', response.data.isAdmin)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault()
         const loading = toast.loading('Buscando usuario...', { className: styles.toastLoading })
@@ -34,6 +44,7 @@ export default function Login() {
                     toast.update(loading, { render: 'Usuario no encontrado', type: 'error', isLoading: false, autoClose: 3000, className: styles.toastError })
                 }
                 if (response.data.count === 1) {
+                    isAdmin(code)
                     toast.update(loading, { render: 'Usuario encontrado', type: 'success', isLoading: false, autoClose: 3000, className: styles.toastLoading })
                     setShowLoader(true)
                     setTimeout(() => {

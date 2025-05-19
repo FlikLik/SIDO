@@ -19,6 +19,14 @@ export const getAllUsers = (code, callback) => {
     })
 }
 
+export const getIsAdmin = ([code], callback) => {
+    const query = 'SELECT isAdmin FROM Users WHERE code = ?'
+    db.query(query, [code], (err, results) => {
+        if (err) throw err
+        return callback(null, results)
+    })
+}
+
 //Sentencia que devuelve el nombre de la empresa que tiene el mismo code que el que se le pasa por parametro
 //Se utiliza para buscar el nombre de la empresa en la base de datos
 export const getCompany = (code, callback) => {
@@ -108,6 +116,7 @@ export const getEmployeesBothYears = ([name], callback) => {
     })
 }
 
+//Sentencia que inserta una nueva empresa en la base de datos
 export const insertCompany = ([name, line, mision, vision], callback) => {
     const query = 'INSERT INTO Companies (name, line, mision, vision) VALUES (?, ?, ?, ?)'
     db.query(query, [name, line, mision, vision], (err, results) => {
@@ -116,6 +125,7 @@ export const insertCompany = ([name, line, mision, vision], callback) => {
     })
 }
 
+//Sentencia que inserta un nuevo usuario en la base de datos
 export const insertUser = ([code, id_Company, position, area, isAdmin], callback) => {
     const query = 'INSERT INTO Users (code, id_Company, position, area, isAdmin) VALUES (?, ?, ?, ?, ?)'
     db.query(query, [code, id_Company, position, area, isAdmin], (err, results) => {
@@ -124,3 +134,43 @@ export const insertUser = ([code, id_Company, position, area, isAdmin], callback
     })
 }
 
+//Consultas generales
+//ECAI
+export const getECAI = ([name], callback) => {
+    const query = 'SELECT id, educacionValue, capacitacionValue, adiestramientoValue, instruccionValue, advance, waste, year FROM ECAIresults WHERE id_company = (SELECT id FROM Companies WHERE name = ?)'
+    db.query(query, [name], (err, results) => {
+        if (err) throw err
+        return callback(null, results)
+    })
+}
+
+//Inserciones
+//Sentencia que inserta un nuevo registro de análisis ECAI en la base de datos
+export const insertECAI = ([name, eduVal, capVal, adiVal, insVal, advance, waste, year], callback) => {
+    const query = 'INSERT INTO ECAIresults (id_company, educacionValue, capacitacionValue, adiestramientoValue, instruccionValue, advance, waste, year) VALUES ((SELECT id FROM Companies WHERE name = ?), ?, ?, ?, ?, ?, ?, ?)'
+    db.query(query, [name, eduVal, capVal, adiVal, insVal, advance, waste, year], (err, results) => {
+        if (err) throw err
+        return callback(null, results)
+    })
+}
+
+
+//Ediciones
+//Sentencia que actualiza el registro de análisis ECAI en la base de datos
+export const updateECAI = ([name, eduVal, capVal, adiVal, insVal, advance, waste, year], callback) => {
+    const query = 'UPDATE ECAIresults SET educacionValue = ?, capacitacionValue = ?, adiestramientoValue = ?, instruccionValue = ?, advance = ?, waste = ?, year = ? WHERE id = ?'
+    db.query(query, [eduVal, capVal, adiVal, insVal, advance, waste, year, name], (err, results) => {
+        if (err) throw err
+        return callback(null, results)
+    })
+}
+
+//Eliminaciones
+//Sentencia que elimina el registro de análisis ECAI en la base de datos
+export const deleteECAI = ([id], callback) => {
+    const query = 'DELETE FROM ECAIresults WHERE id = ?'
+    db.query(query, [id], (err, results) => {
+        if (err) throw err
+        return callback(null, results)
+    })
+}

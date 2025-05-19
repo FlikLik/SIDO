@@ -39,7 +39,7 @@ export default function Register() {
             toast.update(loading, { render: 'Debes completar los campos de la empresa', type: 'error', isLoading: false, autoClose: 3000, className: styles2.toastError })
             return
         }
-        axios.post('http://localhost:3000/submitUser', { code: generateCode(), id_Company: idComp, position: usersAnswers.position, area: usersAnswers.area, isAdmin: 1 })
+        axios.post('https://sido-9e7g.onrender.com/submitUser', { code: generateCode(), id_Company: idComp, position: usersAnswers.position, area: usersAnswers.area, isAdmin: 1 })
             .then(response => {
                 if (response.data.affectedRows === 1) {
                     toast.update(loading, { render: 'Usuario registrado', type: 'success', isLoading: false, autoClose: 3000, className: styles2.toastLoading })
@@ -60,7 +60,7 @@ export default function Register() {
             toast.update(loading, { render: 'Debes completar los campos de la empresa', type: 'error', isLoading: false, autoClose: 3000, className: styles2.toastError })
             return
         }
-        axios.post('http://localhost:3000/submitCompany', { name: companiesAnswers.name, line: companiesAnswers.line, mision: companiesAnswers.mision, vision: companiesAnswers.vision })
+        axios.post('https://sido-9e7g.onrender.com/submitCompany', { name: companiesAnswers.name, line: companiesAnswers.line, mision: companiesAnswers.mision, vision: companiesAnswers.vision })
             .then(response => {
                 if (response.data.affectedRows === 1) {
                     toast.update(loading, { render: 'Empresa registrada', type: 'success', isLoading: false, autoClose: 3000, className: styles2.toastLoading })
@@ -78,6 +78,9 @@ export default function Register() {
     return (
         <div className="container has-text-centered mt-6">
             <h1 className={'title is-1 ' + styles.title1}>Formulario de Registro para SIDO</h1>
+            <button className='button is-info mt-3' onClick={() => navigate('/')}>Regresar</button>
+            <br />
+            <br />
             {
                 showCompanyForm && (
                     <form className={'box field control has-icons-left ' + styles2.form}>
@@ -150,7 +153,6 @@ export default function Register() {
                     <div className={'title is3 ' + styles.title2}>
                         <h1 className={'title is-3 ' + styles.title1}>Código de acceso</h1>
                         <p className={'is-size-5 has-text-centered has-text-black ' + styles2.text}>{code.current}</p>
-                        <button className='button is-info mt-3' onClick={() => navigate('/')}>Regresar</button>
                     </div>
                 )
             }

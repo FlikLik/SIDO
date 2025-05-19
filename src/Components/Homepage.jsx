@@ -6,6 +6,7 @@ import Concepts from './Home/Concepts'
 import Results from './Home/Results'
 import Summary from './Home/Summary'
 import Footer from './Footer'
+import ControlPanel from './ControlPanel'
 
 export default function Homepage() {
 
@@ -25,6 +26,7 @@ export default function Homepage() {
                 {activeTab === 'Concepts' && <Concepts />}
                 {activeTab === 'Results' && <Results />}
                 {activeTab === 'Summary' && <Summary />}
+                {activeTab === 'Control Panel' && <ControlPanel />}
             </div>
             <br />
             <br />
