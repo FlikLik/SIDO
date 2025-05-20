@@ -17,7 +17,7 @@ export default function OCQcontrol() {
 
     useEffect(() => {
         const name = localStorage.getItem('company')
-        axios.post('http://localhost:3000/getOCQ', { name })
+        axios.post('https://sido-9e7g.onrender.com/getOCQ', { name })
             .then(response => {
                 setResults(response.data)
             })
@@ -54,7 +54,7 @@ export default function OCQcontrol() {
 
     const del = () => {
         const loading = toast.loading('Eliminando...', { className: styles.toastLoading })
-        axios.post('http://localhost:3000/deleteOCQ', { id: idEdit })
+        axios.post('https://sido-9e7g.onrender.com/deleteOCQ', { id: idEdit })
             .then(response => {
                 toast.update(loading, { render: 'Resultado eliminado', type: 'success', isLoading: false, autoClose: 3000, className: styles.toastLoading })
                 setRender(render + 1)
@@ -71,7 +71,7 @@ export default function OCQcontrol() {
         const name = localStorage.getItem('company')
         switch (operation) {
             case 'add':
-                axios.post('http://localhost:3000/addOCQ', { name: name, depname: data.depname, id_employee: data.id_employee, a: data.a, b: data.b, c: data.c, d: data.d, e: data.e, f: data.f, g: data.g, h: data.h, i: data.i, j: data.j, k: data.k, l: data.l, m: data.m, n: data.n, year: data.year })
+                axios.post('https://sido-9e7g.onrender.com/addOCQ', { name: name, depname: data.depname, id_employee: data.id_employee, a: data.a, b: data.b, c: data.c, d: data.d, e: data.e, f: data.f, g: data.g, h: data.h, i: data.i, j: data.j, k: data.k, l: data.l, m: data.m, n: data.n, year: data.year })
                     .then(response => {
                         toast.update(loading, { render: 'Resultado registrado', type: 'success', isLoading: false, autoClose: 3000, className: styles.toastLoading })
                         console.log(response.data)
@@ -83,7 +83,7 @@ export default function OCQcontrol() {
                     })
                 break
             case 'edit':
-                axios.post('http://localhost:3000/editOCQ', { id: idEdit, depname: data.depname, id_employee: data.id_employee, a: data.A, b: data.B, c: data.C, d: data.D, e: data.E, f: data.F, g: data.G, h: data.H, i: data.I, j: data.J, k: data.K, l: data.L, m: data.M, n: data.N, year: data.year })
+                axios.post('https://sido-9e7g.onrender.com/editOCQ', { id: idEdit, depname: data.depname, id_employee: data.id_employee, a: data.A, b: data.B, c: data.C, d: data.D, e: data.E, f: data.F, g: data.G, h: data.H, i: data.I, j: data.J, k: data.K, l: data.L, m: data.M, n: data.N, year: data.year })
                     .then(response => {
                         toast.update(loading, { render: 'Resultado actualizado ID modificado: ' + idEdit, type: 'success', isLoading: false, autoClose: 3000, className: styles.toastLoading })
                         console.log(response.data)
