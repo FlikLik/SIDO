@@ -153,6 +153,15 @@ export const getECAI = ([name], callback) => {
     })
 }
 
+//NOM-035
+export const getNOM = ([name], callback) => {
+    const query = 'SELECT id, guide, domain, rate, interpretation FROM NOMresults WHERE id_company = (SELECT id FROM Companies WHERE name = ?)'
+    db.query(query, [name], (err, results) => {
+        if (err) throw err
+        return callback(null, results)
+    })
+}
+
 //Inserciones
 //Sentencia que inserta un nuevo usuario en la base de datos desde el panel de control
 export const addUser = ([code, name, position, area, isAdmin], callback) => {
@@ -167,6 +176,14 @@ export const addUser = ([code, name, position, area, isAdmin], callback) => {
 export const insertECAI = ([name, eduVal, capVal, adiVal, insVal, advance, waste, year], callback) => {
     const query = 'INSERT INTO ECAIresults (id_company, educacionValue, capacitacionValue, adiestramientoValue, instruccionValue, advance, waste, year) VALUES ((SELECT id FROM Companies WHERE name = ?), ?, ?, ?, ?, ?, ?, ?)'
     db.query(query, [name, eduVal, capVal, adiVal, insVal, advance, waste, year], (err, results) => {
+        if (err) throw err
+        return callback(null, results)
+    })
+}
+
+export const insertNOM = ([name, guide, domain, rate, interpretation], callback) => {
+    const query = 'INSERT INTO NOMresults (id_company, guide, domain, rate, interpretation) VALUES ((SELECT id FROM Companies WHERE name = ?), ?, ?, ?, ?)'
+    db.query(query, [name, guide, domain, rate, interpretation], (err, results) => {
         if (err) throw err
         return callback(null, results)
     })
@@ -192,6 +209,14 @@ export const updateECAI = ([name, eduVal, capVal, adiVal, insVal, advance, waste
     })
 }
 
+export const updateNOM = ([name, guide, domain, rate, interpretation], callback) => {
+    const query = 'UPDATE NOMresults SET guide = ?, domain = ?, rate = ?, interpretation = ? WHERE id = ?'
+    db.query(query, [guide, domain, rate, interpretation, name], (err, results) => {
+        if (err) throw err
+        return callback(null, results)
+    })
+}
+
 //Eliminaciones
 //Sentencia que elimina el usuario en la base de datos desde el panel de control
 export const deleteUser = ([id], callback) => {
@@ -205,6 +230,14 @@ export const deleteUser = ([id], callback) => {
 //Sentencia que elimina el registro de análisis ECAI en la base de datos
 export const deleteECAI = ([id], callback) => {
     const query = 'DELETE FROM ECAIresults WHERE id = ?'
+    db.query(query, [id], (err, results) => {
+        if (err) throw err
+        return callback(null, results)
+    })
+}
+
+export const deleteNOM = ([id], callback) => {
+    const query = 'DELETE FROM NOMresults WHERE id = ?'
     db.query(query, [id], (err, results) => {
         if (err) throw err
         return callback(null, results)

@@ -1,6 +1,7 @@
 import styles from '../Styles/general.module.css'
 import UsersControl from './ControlPanel/UsersControl'
 import ECAIcontrol from './ControlPanel/ECAIcontrol'
+import NOMcontrol from './ControlPanel/NOMcontrol'
 
 export default function ControlPanel() {
     return (
@@ -10,6 +11,8 @@ export default function ControlPanel() {
             <UsersControl />
             <h2 className={'title is-3 ' + styles.title2}>Sección de análisis ECAI</h2>
             <ECAIcontrol />
+            <h2 className={'title is-3 ' + styles.title2}>Sección de la NOM-035</h2>
+            <NOMcontrol />
         </div>
     )
 }

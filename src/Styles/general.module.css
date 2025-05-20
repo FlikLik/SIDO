@@ -41,6 +41,11 @@
     padding-bottom: 5px;
 }
 
+.table {
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
 .table tr:nth-child(even) {
     background-color: #2d2d2d;
 }
@@ -49,10 +54,6 @@
     background-color: #444444;
 }
 
-.table {
-    max-height: 300px;
-    overflow-y: scroll;
-}
 
 .table td,
 .table thead th {

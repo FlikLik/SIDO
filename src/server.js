@@ -149,6 +149,13 @@ app.post('/getECAI', (req, res) => {
     })
 })
 
+app.post('/getNOM', (req, res) => {
+    const { name } = req.body
+    queries.getNOM([name], (err, results) => {
+        if (err) throw err
+        res.send(results)
+    })
+})
 
 //Inserciones generales
 app.post('/addECAI', (req, res) => {
@@ -162,6 +169,14 @@ app.post('/addECAI', (req, res) => {
 app.post('/addUser', (req, res) => {
     const { code, name, position, area, isAdmin } = req.body
     queries.addUser([code, name, position, area, isAdmin], (err, results) => {
+        if (err) throw err
+        res.send(results)
+    })
+})
+
+app.post('/addNOM', (req, res) => {
+    const { name, guide, domain, rate, interpretation } = req.body
+    queries.insertNOM([name, guide, domain, rate, interpretation], (err, results) => {
         if (err) throw err
         res.send(results)
     })
@@ -185,6 +200,14 @@ app.post('/editECAI', (req, res) => {
     })
 })
 
+app.post('/editNOM', (req, res) => {
+    const { id, guide, domain, rate, interpretation } = req.body
+    queries.updateNOM([id, guide, domain, rate, interpretation], (err, results) => {
+        if (err) throw err
+        res.send(results)
+    })
+})
+
 //Eliminaciones generales
 app.post('/deleteUser', (req, res) => {
     const { id } = req.body
@@ -194,10 +217,17 @@ app.post('/deleteUser', (req, res) => {
     })
 })
 
-
 app.post('/deleteECAI', (req, res) => {
     const { id } = req.body
     queries.deleteECAI([id], (err, results) => {
+        if (err) throw err
+        res.send(results)
+    })
+})
+
+app.post('/deleteNOM', (req, res) => {
+    const { id } = req.body
+    queries.deleteNOM([id], (err, results) => {
         if (err) throw err
         res.send(results)
     })
