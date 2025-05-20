@@ -130,12 +130,12 @@ export default function ECAIcontrol() {
                                                 <td className='has-text-centered'>{result.waste}</td>
                                                 <td className='has-text-centered'>{result.year}</td>
                                                 <td className='has-text-centered'>
-                                                    <button className='button is-info is-small mr-4' onClick={() => edit(result.id, result.educacionValue, result.capacitacionValue, result.adiestramientoValue, result.instruccionValue, result.advance, result.waste, result.year)}>
+                                                    <button className='button is-info is-small m-1' onClick={() => edit(result.id, result.educacionValue, result.capacitacionValue, result.adiestramientoValue, result.instruccionValue, result.advance, result.waste, result.year)}>
                                                         <span className='icon is-small'>
                                                             <img src='editIcon.svg' alt='edit' width={20} height={20} />
                                                         </span>
                                                     </button>
-                                                    <button className='button is-danger is-small ' onClick={() => confirm(result.id)}>
+                                                    <button className='button is-danger is-small m-1' onClick={() => confirm(result.id)}>
                                                         <span className='icon is-small'>
                                                             <img src='deleteIcon.svg' alt='delete' width={20} height={20} />
                                                         </span>
@@ -234,7 +234,7 @@ export default function ECAIcontrol() {
                 <div className='modal-background'></div>
                 <div className='modal-content box'>
                     <h2 className='subtitle is-3 has-text-centered'>¿Estás seguro que deseas eliminar este registro?</h2>
-                    <button className='button is-danger mr-4' onClick={del}>Eliminar</button>
+                    <button className='button is-danger m-4' onClick={del}>Eliminar</button>
                     <button className='button' onClick={reset}>Cancelar</button>
                 </div>
                 <button className="modal-close is-large" aria-label="close" onClick={reset}></button>

@@ -162,6 +162,15 @@ export const getNOM = ([name], callback) => {
     })
 }
 
+//OCQ
+export const getOCQ = ([name], callback) => {
+    const query = 'SELECT * FROM OCQresults WHERE id_company = (SELECT id FROM Companies WHERE name = ?)'
+    db.query(query, [name], (err, results) => {
+        if (err) throw err
+        return callback(null, results)
+    })
+}
+
 //Inserciones
 //Sentencia que inserta un nuevo usuario en la base de datos desde el panel de control
 export const addUser = ([code, name, position, area, isAdmin], callback) => {
@@ -189,6 +198,22 @@ export const insertNOM = ([name, guide, domain, rate, interpretation], callback)
     })
 }
 
+export const insertOCQ = ([name, depname, id_employee, a, b, c, d, e, f, g, h, i, j, k, l, m, n, year], callback) => {
+    if (depname != '') {
+        const query = 'INSERT INTO OCQresults (id_company, depName, A, B, C, D, E, F, G, H, I, J, K, L, M, N, year) VALUES ((SELECT id FROM Companies WHERE name = ?), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
+        db.query(query, [name, depname, id_employee, a, b, c, d, e, f, g, h, i, j, k, l, m, n, year], (err, results) => {
+            if (err) throw err
+            return callback(null, results)
+        })
+    }
+    if (id_employee != '') {
+        const query = 'INSERT INTO OCQresults (id_company, id_employee, A, B, C, D, E, F, G, H, I, J, K, L, M, N, year) VALUES ((SELECT id FROM Companies WHERE name = ?), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
+        db.query(query, [name, id_employee, a, b, c, d, e, f, g, h, i, j, k, l, m, n, year], (err, results) => {
+            if (err) throw err
+            return callback(null, results)
+        })
+    }
+}
 
 //Ediciones
 //Sentencia que actualiza el usuario en la base de datos desde el panel de control
@@ -217,6 +242,14 @@ export const updateNOM = ([name, guide, domain, rate, interpretation], callback)
     })
 }
 
+export const updateOCQ = ([name, depname, id_employee, a, b, c, d, e, f, g, h, i, j, k, l, m, n, year], callback) => {
+    const query = 'UPDATE OCQresults SET depName = ?, id_employee = ?, A = ?, B = ?, C = ?, D = ?, E = ?, F = ?, G = ?, H = ?, I = ?, J = ?, K = ?, L = ?, M = ?, N = ?, year = ? WHERE id = ?'
+    db.query(query, [depname, id_employee, a, b, c, d, e, f, g, h, i, j, k, l, m, n, year, name], (err, results) => {
+        if (err) throw err
+        return callback(null, results)
+    })
+}
+
 //Eliminaciones
 //Sentencia que elimina el usuario en la base de datos desde el panel de control
 export const deleteUser = ([id], callback) => {
@@ -238,6 +271,14 @@ export const deleteECAI = ([id], callback) => {
 
 export const deleteNOM = ([id], callback) => {
     const query = 'DELETE FROM NOMresults WHERE id = ?'
+    db.query(query, [id], (err, results) => {
+        if (err) throw err
+        return callback(null, results)
+    })
+}
+
+export const deleteOCQ = ([id], callback) => {
+    const query = 'DELETE FROM OCQresults WHERE id = ?'
     db.query(query, [id], (err, results) => {
         if (err) throw err
         return callback(null, results)

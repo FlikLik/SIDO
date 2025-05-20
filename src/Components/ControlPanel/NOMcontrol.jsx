@@ -123,12 +123,12 @@ export default function NOMcontrol() {
                                                 <td className='has-text-centered'>{result.rate}</td>
                                                 <td className='has-text-centered'>{result.interpretation}</td>
                                                 <td className='has-text-centered'>
-                                                    <button className='button is-info is-small mr-4' onClick={() => edit(result.id, result.guide, result.domain, result.rate, result.interpretation)}>
+                                                    <button className='button is-info is-small m-1' onClick={() => edit(result.id, result.guide, result.domain, result.rate, result.interpretation)}>
                                                         <span className='icon is-small'>
                                                             <img src='editIcon.svg' alt='edit' width={20} height={20} />
                                                         </span>
                                                     </button>
-                                                    <button className='button is-danger is-small ' onClick={() => confirm(result.id)}>
+                                                    <button className='button is-danger is-small m-1' onClick={() => confirm(result.id)}>
                                                         <span className='icon is-small'>
                                                             <img src='deleteIcon.svg' alt='delete' width={20} height={20} />
                                                         </span>

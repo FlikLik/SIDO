@@ -157,6 +157,14 @@ app.post('/getNOM', (req, res) => {
     })
 })
 
+app.post('/getOCQ', (req, res) => {
+    const { name } = req.body
+    queries.getOCQ([name], (err, results) => {
+        if (err) throw err
+        res.send(results)
+    })
+})
+
 //Inserciones generales
 app.post('/addECAI', (req, res) => {
     const { name, eduVal, capVal, adiVal, insVal, advance, waste, year } = req.body
@@ -177,6 +185,14 @@ app.post('/addUser', (req, res) => {
 app.post('/addNOM', (req, res) => {
     const { name, guide, domain, rate, interpretation } = req.body
     queries.insertNOM([name, guide, domain, rate, interpretation], (err, results) => {
+        if (err) throw err
+        res.send(results)
+    })
+})
+
+app.post('/addOCQ', (req, res) => {
+    const { name, depname, id_employee, a, b, c, d, e, f, g, h, i, j, k, l, m, n, year } = req.body
+    queries.insertOCQ([name, depname, id_employee, a, b, c, d, e, f, g, h, i, j, k, l, m, n, year], (err, results) => {
         if (err) throw err
         res.send(results)
     })
@@ -208,6 +224,14 @@ app.post('/editNOM', (req, res) => {
     })
 })
 
+app.post('/editOCQ', (req, res) => {
+    const { id, depname, id_employee, a, b, c, d, e, f, g, h, i, j, k, l, m, n, year } = req.body
+    queries.updateOCQ([id, depname, id_employee, a, b, c, d, e, f, g, h, i, j, k, l, m, n, year], (err, results) => {
+        if (err) throw err
+        res.send(results)
+    })
+})
+
 //Eliminaciones generales
 app.post('/deleteUser', (req, res) => {
     const { id } = req.body
@@ -228,6 +252,14 @@ app.post('/deleteECAI', (req, res) => {
 app.post('/deleteNOM', (req, res) => {
     const { id } = req.body
     queries.deleteNOM([id], (err, results) => {
+        if (err) throw err
+        res.send(results)
+    })
+})
+
+app.post('/deleteOCQ', (req, res) => {
+    const { id } = req.body
+    queries.deleteOCQ([id], (err, results) => {
         if (err) throw err
         res.send(results)
     })
