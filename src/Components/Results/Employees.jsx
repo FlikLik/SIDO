@@ -33,7 +33,6 @@ export default function Employees({ year }) {
     const handleEmployeeData = (selectedEmployee) => {
         axios.post('https://sido-9e7g.onrender.com/employeesData', { code: selectedEmployee })
             .then(response => {
-                console.log(response.data)
                 setEmployeeData(response.data)
             })
             .catch(error => {

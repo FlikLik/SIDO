@@ -11,7 +11,7 @@ export const db = createConnection({
 
 try {
     db.connect((err) => {
-        if (err) throw err.message
+        if (err) throw err
         console.log('Connected to the database')
     })
 } catch (err) {
