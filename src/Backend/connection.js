@@ -9,7 +9,11 @@ export const db = createConnection({
     user: process.env.REACT_APP_DB_USER,
 })
 
-db.connect((err) => {
-    if (err) throw err.message
-    console.log('Connected to the database')
-})
+try {
+    db.connect((err) => {
+        if (err) throw err.message
+        console.log('Connected to the database')
+    })
+} catch (err) {
+    console.log(err)
+}

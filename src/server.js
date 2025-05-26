@@ -17,10 +17,14 @@ app.get('/', (req, res) => {
 //Se utiliza para verificar si el usuario existe
 app.post('/login', (req, res) => {
     const { code } = req.body
-    queries.getAllUsers([code], (err, results) => {
-        if (err) throw err
-        res.send({ count: results[0].count })
-    })
+    try {
+        queries.getAllUsers([code], (err, results) => {
+            if (err) throw err
+            res.send({ count: results[0].count })
+        })
+    } catch (err) {
+        console.log(err)
+    }
 })
 
 app.post('/isAdmin', (req, res) => {
