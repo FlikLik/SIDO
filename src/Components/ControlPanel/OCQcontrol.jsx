@@ -9,7 +9,7 @@ export default function OCQcontrol() {
     const [results, setResults] = useState([])
     const [showModal, setShowModal] = useState(false)
     const [showConfirm, setShowConfirm] = useState(false)
-    const [data, setData] = useState({ name: '', depname: '', id_employee: '', A: '', B: '', C: '', D: '', E: '', F: '', G: '', H: '', I: '', J: '', K: '', L: '', M: '', N: '', year: '' })
+    const [data, setData] = useState({ name: '', depname: '', code: '', A: '', B: '', C: '', D: '', E: '', F: '', G: '', H: '', I: '', J: '', K: '', L: '', M: '', N: '', year: '' })
     const [idEdit, setIdEdit] = useState(0)
     const [operation, setOperation] = useState('')
     const [render, setRender] = useState(0)
@@ -32,14 +32,14 @@ export default function OCQcontrol() {
         showConfirm && setShowConfirm(false)
         setIdEdit(0)
         setOperation('')
-        setData({ name: '', depname: '', id_employee: '', a: '', b: '', c: '', d: '', e: '', f: '', g: '', h: '', i: '', j: '', k: '', l: '', m: '', n: '', year: '' })
+        setData({ name: '', depname: '', code: '', a: '', b: '', c: '', d: '', e: '', f: '', g: '', h: '', i: '', j: '', k: '', l: '', m: '', n: '', year: '' })
     }
 
-    const edit = (id, depname, id_employee, a, b, c, d, e, f, g, h, i, j, k, l, m, n, year) => {
+    const edit = (id, depname, code, a, b, c, d, e, f, g, h, i, j, k, l, m, n, year) => {
         !showModal && setShowModal(true)
         setOperation('edit')
         setIdEdit(id)
-        setData({ depname: depname, id_employee: id_employee, a: a, b: b, c: c, d: d, e: e, f: f, g: g, h: h, i: i, j: j, k: k, l: l, m: m, n: n, year: year })
+        setData({ depname: depname, code: code, a: a, b: b, c: c, d: d, e: e, f: f, g: g, h: h, i: i, j: j, k: k, l: l, m: m, n: n, year: year })
     }
 
     const add = () => {
@@ -71,7 +71,7 @@ export default function OCQcontrol() {
         const name = localStorage.getItem('company')
         switch (operation) {
             case 'add':
-                axios.post('https://sido-9e7g.onrender.com/addOCQ', { name: name, depname: data.depname, id_employee: data.id_employee, a: data.a, b: data.b, c: data.c, d: data.d, e: data.e, f: data.f, g: data.g, h: data.h, i: data.i, j: data.j, k: data.k, l: data.l, m: data.m, n: data.n, year: data.year })
+                axios.post('https://sido-9e7g.onrender.com/addOCQ', { name: name, depname: data.depname, code: data.code, a: data.a, b: data.b, c: data.c, d: data.d, e: data.e, f: data.f, g: data.g, h: data.h, i: data.i, j: data.j, k: data.k, l: data.l, m: data.m, n: data.n, year: data.year })
                     .then(response => {
                         toast.update(loading, { render: 'Resultado registrado', type: 'success', isLoading: false, autoClose: 3000, className: styles.toastLoading })
                         console.log(response.data)
@@ -83,7 +83,7 @@ export default function OCQcontrol() {
                     })
                 break
             case 'edit':
-                axios.post('https://sido-9e7g.onrender.com/editOCQ', { id: idEdit, depname: data.depname, id_employee: data.id_employee, a: data.A, b: data.B, c: data.C, d: data.D, e: data.E, f: data.F, g: data.G, h: data.H, i: data.I, j: data.J, k: data.K, l: data.L, m: data.M, n: data.N, year: data.year })
+                axios.post('https://sido-9e7g.onrender.com/editOCQ', { id: idEdit, depname: data.depname, code: data.code, a: data.A, b: data.B, c: data.C, d: data.D, e: data.E, f: data.F, g: data.G, h: data.H, i: data.I, j: data.J, k: data.K, l: data.L, m: data.M, n: data.N, year: data.year })
                     .then(response => {
                         toast.update(loading, { render: 'Resultado actualizado ID modificado: ' + idEdit, type: 'success', isLoading: false, autoClose: 3000, className: styles.toastLoading })
                         console.log(response.data)
@@ -125,7 +125,7 @@ export default function OCQcontrol() {
                                         results.map((results, index) => (
                                             <tr key={index}>
                                                 <td className='has-text-centered'>{results.depName}</td>
-                                                <td className='has-text-centered'>{results.id_employee}</td>
+                                                <td className='has-text-centered'>{results.code}</td>
                                                 {
                                                     KPIS.map((kpi, index) => (
                                                         <td className='has-text-centered' key={index}>{results[letters[index]]}</td>
@@ -133,7 +133,7 @@ export default function OCQcontrol() {
                                                 }
                                                 <td className='has-text-centered'>{results.year}</td>
                                                 <td className='has-text-centered'>
-                                                    <button className='button is-info is-small m-1' onClick={() => edit(results.id, results.depName, results.id_employee, results.A, results.B, results.C, results.D, results.E, results.F, results.G, results.H, results.I, results.J, results.K, results.L, results.M, results.N, results.year)}>
+                                                    <button className='button is-info is-small m-1' onClick={() => edit(results.id, results.depName, results.code, results.A, results.B, results.C, results.D, results.E, results.F, results.G, results.H, results.I, results.J, results.K, results.L, results.M, results.N, results.year)}>
                                                         <span className='icon is-small'>
                                                             <img src='editIcon.svg' alt='edit' width={20} height={20} />
                                                         </span>
@@ -180,7 +180,7 @@ export default function OCQcontrol() {
                                             <div className='field'>
                                                 <label className={'label ' + styles.text}>Empleado</label>
                                                 <div className='control'>
-                                                    <input className='input is-normal' type='text' placeholder='Empleado' value={data.id_employee} onChange={(e) => setData({ ...data, id_employee: e.target.value })} required />
+                                                    <input className='input is-normal' type='text' placeholder='Empleado' value={data.code} onChange={(e) => setData({ ...data, code: e.target.value })} required />
                                                 </div>
                                             </div>
                                         </div>

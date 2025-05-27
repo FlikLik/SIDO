@@ -237,7 +237,7 @@ export const getNOM = ([name], callback) => {
 
 //OCQ
 export const getOCQ = ([name], callback) => {
-    const query = 'SELECT * FROM OCQresults WHERE id_company = (SELECT id FROM Companies WHERE name = ?)'
+    const query = 'SELECT depName, code, A, B, C, D, E, F, G, H, I, J, K, L, M, N, year FROM OCQresults LEFT JOIN Users ON Users.id = OCQresults.id_employee WHERE OCQresults.id_company = (SELECT id FROM Companies WHERE name = ?)'
     try {
         db.query(query, [name], (err, results) => {
             if (err) throw err
